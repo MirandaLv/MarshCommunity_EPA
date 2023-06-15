@@ -1,0 +1,1200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pix4dmapper>
+    <software>
+        <projectVersion>4.7.5</projectVersion>
+        <p4dVersion>22</p4dVersion>
+        <cameraModelVersion>19</cameraModelVersion>
+    </software>
+    <options>
+        <initial>
+            <runStep>true</runStep>
+            <!--    General    -->
+            <!--Keypoints Image Scale-->
+            <keypointsImageScale>Full</keypointsImageScale>
+            <imageScale>1</imageScale>
+            <!--Quality report-->
+            <generateOrthoInReport>true</generateOrthoInReport>
+            <!--    Matching    -->
+            <!--Matching Image Pairs-->
+            <matchStrategy>AutoAerial</matchStrategy>
+            <matchTimeNbNeighbours>2</matchTimeNbNeighbours>
+            <matchUseTriangulation>true</matchUseTriangulation>
+            <matchRelativeDistanceImages>0</matchRelativeDistanceImages>
+            <matchMtpMaxImagePair>5</matchMtpMaxImagePair>
+            <matchImageSimilarityMaxPairs>1</matchImageSimilarityMaxPairs>
+            <matchTimeMultiCamera>0</matchTimeMultiCamera>
+            <!--Matching Strategy-->
+            <geometricallyVerifiedMatching>false</geometricallyVerifiedMatching>
+            <!--    Calibration    -->
+            <!--Targeted number of keypoints-->
+            <keypointSelectionMethod>Automatic</keypointSelectionMethod>
+            <numberOfKeypoints>10000</numberOfKeypoints>
+            <!--Method-->
+            <calibrationMethod>Standard</calibrationMethod>
+            <!--Optimizer-->
+            <optimizerType>Ceres</optimizerType>
+            <!--Camera optimization-->
+            <internalParamOptimization>All</internalParamOptimization>
+            <externalParamOptimization>All</externalParamOptimization>
+            <leverarmParamOptimization>None</leverarmParamOptimization>
+            <!--Rematch-->
+            <rematchStrategy>Auto</rematchStrategy>
+            <rematch>true</rematch>
+            <rematchOverlap>0.3000000119</rematchOverlap>
+            <!--SkySegmentation-->
+            <automaticSkyMasking>true</automaticSkyMasking>
+            <!--Export-->
+            <exportCameraParamsAATBBA>true</exportCameraParamsAATBBA>
+            <exportUndistortedImages>false</exportUndistortedImages>
+            <!--    Miscellaneous options    -->
+            <matchAll>false</matchAll>
+            <targetCameraDist>0</targetCameraDist>
+            <descriptorType>0</descriptorType>
+            <minImageDist>3.8590407939</minImageDist>
+            <rigMatch>true</rigMatch>
+            <saveKMLReport>false</saveKMLReport>
+            <createThumbnails>true</createThumbnails>
+            <threshAdd>20</threshAdd>
+            <threshHom>10</threshHom>
+        </initial>
+        <dense>
+            <runStep>true</runStep>
+            <!--Densification-->
+            <pclImageDownscaleFactor>0</pclImageDownscaleFactor>
+            <pclImageMultiscale>true</pclImageMultiscale>
+            <pclDensity>Optimal</pclDensity>
+            <pclMinNoMatches>3</pclMinNoMatches>
+            <!--Export-->
+            <pclExportLAS>true</pclExportLAS>
+            <pclExportLAZ>false</pclExportLAZ>
+            <pclExportPLY>false</pclExportPLY>
+            <pclExportXYZ>false</pclExportXYZ>
+            <pclExportXYZDelim>Space</pclExportXYZDelim>
+            <pclExportMergeTiles>false</pclExportMergeTiles>
+            <!--    Advanced    -->
+            <!--Densification-->
+            <pclWindowSize>7</pclWindowSize>
+            <!--Image groups-->
+            <pclImageGroups>
+                <group name=""/>
+            </pclImageGroups>
+            <!--Point cloud Filters-->
+            <pclUseProcessingArea>true</pclUseProcessingArea>
+            <pclUseAnnotations>true</pclUseAnnotations>
+            <pclLimitDepthAutomatically>false</pclLimitDepthAutomatically>
+            <!--Classification-->
+            <pclClassify>false</pclClassify>
+            <!--Miscellaneous options-->
+            <pclUniformityThreshold>3.5</pclUniformityThreshold>
+            <pclRegularizedMultiscale>false</pclRegularizedMultiscale>
+        </dense>
+        <mesh>
+            <!--Generation-->
+            <meshGenerate3dTexturedMesh>true</meshGenerate3dTexturedMesh>
+            <!--Settings-->
+            <meshResolution>High</meshResolution>
+            <meshMaxOctreeDepth>14</meshMaxOctreeDepth>
+            <meshTextureSize>16384</meshTextureSize>
+            <meshDecimationCriteria>Quantitative</meshDecimationCriteria>
+            <meshMaxTriangles>5000000</meshMaxTriangles>
+            <meshDecimationStrategy>Sensitive</meshDecimationStrategy>
+            <meshTextureColorBalancing>false</meshTextureColorBalancing>
+            <!--Export-->
+            <meshExportPLY>false</meshExportPLY>
+            <meshExportFBX>true</meshExportFBX>
+            <meshExportDXF>false</meshExportDXF>
+            <meshExportOBJ>true</meshExportOBJ>
+            <meshExportTiledOBJ>false</meshExportTiledOBJ>
+            <meshExportPDF3D>false</meshExportPDF3D>
+            <meshExportPDF3DLogoPath></meshExportPDF3DLogoPath>
+            <!--Image groups-->
+            <meshGeometryImageGroups>
+                <group name=""/>
+            </meshGeometryImageGroups>
+            <meshTextureImageGroups>
+                <group name=""/>
+            </meshTextureImageGroups>
+            <!--Mesh generation-->
+            <meshSampleDensityDivider>1</meshSampleDensityDivider>
+            <!--LOD generation-->
+            <lodExportOSGB>false</lodExportOSGB>
+            <lodExportSLPK>false</lodExportSLPK>
+            <lodLevelCount>4</lodLevelCount>
+            <lodTextureQuality>0</lodTextureQuality>
+        </mesh>
+        <ortho>
+            <runStep>true</runStep>
+            <!--    DSM and Orthomosaic   -->
+            <!--Resolution-->
+            <orthoResolution>-1</orthoResolution>
+            <!--DSM Filters-->
+            <dsmFilterUseNoiseFilter>true</dsmFilterUseNoiseFilter>
+            <dsmFilterUseSmoothing>true</dsmFilterUseSmoothing>
+            <dsmFilterSmoothingType>Sharp</dsmFilterSmoothingType>
+            <!--Raster DSM-->
+            <dsmTIFF>true</dsmTIFF>
+            <dsmMethod>InverseDistanceWeighting</dsmMethod>
+            <dsmTIFFMergeTiles>true</dsmTIFFMergeTiles>
+            <!--Orthomosaic-->
+            <mosaicTIFF>true</mosaicTIFF>
+            <mosaicTIFFMergeTiles>true</mosaicTIFFMergeTiles>
+            <mosaicTIFFNoTransparency>false</mosaicTIFFNoTransparency>
+            <mosaicKML>false</mosaicKML>
+            <!--    Additional outputs    -->
+            <!--Grid DSM-->
+            <gridDsmXYZ>false</gridDsmXYZ>
+            <gridDsmXYZDelim>Space</gridDsmXYZDelim>
+            <gridDsmLAS>false</gridDsmLAS>
+            <gridDsmLAZ>false</gridDsmLAZ>
+            <gridDsmGridSpacing>100</gridDsmGridSpacing>
+            <!--Raster DTM-->
+            <dtmTIFF>false</dtmTIFF>
+            <dtmTIFFMergeTiles>true</dtmTIFFMergeTiles>
+            <dtmResolution>-5</dtmResolution>
+            <!--Contour lines-->
+            <contourSHP>false</contourSHP>
+            <contourPDF>false</contourPDF>
+            <contourDXF>false</contourDXF>
+            <contourBase>0</contourBase>
+            <contourElevationInterval>10</contourElevationInterval>
+            <contourResolution>100</contourResolution>
+            <contourMinLineSize>20</contourMinLineSize>
+            <!--    Miscellaneous options    -->
+            <meanResolution>4.9699240292</meanResolution>
+            <mosaicVisib>true</mosaicVisib>
+            <mosaicGainc>true</mosaicGainc>
+            <dsmPNG>false</dsmPNG>
+        </ortho>
+        <index>
+            <radiometry>
+                <camera id="0">
+                    <radiometricCorrection>none</radiometricCorrection>
+                </camera>
+            </radiometry>
+            <!--Resolution-->
+            <indexResolution>-1</indexResolution>
+            <indexDownsamplingMethod>Gauss</indexDownsamplingMethod>
+            <!--Reflectance Map-->
+            <indexReflectance>false</indexReflectance>
+            <indexReflectanceMergeTiles>false</indexReflectanceMergeTiles>
+            <indices>
+                <index name="red" formula="red" enabled="false"/>
+                <index name="green" formula="green" enabled="false"/>
+                <index name="blue" formula="blue" enabled="false"/>
+                <index name="grayscale" formula="0.2126 * red + 0.7152 * green + 0.0722 * blue" enabled="false"/>
+            </indices>
+            <!--Export-->
+            <indexExportPointSHP>false</indexExportPointSHP>
+            <indexExportPointSHPGridSize>200</indexExportPointSHPGridSize>
+            <indexExportPolygonSHP>false</indexExportPolygonSHP>
+            <indexExportPolygonSHPGridSize>400</indexExportPolygonSHPGridSize>
+        </index>
+    </options>
+    <inputs>
+        <cameras>
+            <camera name="FC6360_5.7_1600x1300">
+                <imageWidth>1600</imageWidth>
+                <imageHeight>1300</imageHeight>
+                <pixelSize>3.13906</pixelSize>
+                <principalPointXmm>2.451493</principalPointXmm>
+                <principalPointYmm>2.007489</principalPointYmm>
+                <lensType>perspective</lensType>
+                <focalLengthmm>6.824065</focalLengthmm>
+                <distortion>5</distortion>
+                <radialK1>-0.511243</radialK1>
+                <radialK2>0.506718</radialK2>
+                <radialK3>-0.545932</radialK3>
+                <tangentialT1>0.000234258</tangentialT1>
+                <tangentialT2>0.000360389</tangentialT2>
+                <cameraModelSource>internalDB</cameraModelSource>
+                <band name="Red" centralWaveLength="660" width="0" weight="0.2126"/>
+                <band name="Green" centralWaveLength="550" width="0" weight="0.7152"/>
+                <band name="Blue" centralWaveLength="470" width="0" weight="0.0722"/>
+                <serialNumber></serialNumber>
+                <fixedBands>false</fixedBands>
+                <id>0</id>
+            </camera>
+        </cameras>
+        <coordinateSystems>
+            <southingWesting>true</southingWesting>
+            <output>
+                <WKT>PROJCS[&quot;WGS 84 / UTM zone 18N&quot;,GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],PRIMEM[&quot;Greenwich&quot;,0,AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],UNIT[&quot;degree&quot;,0.0174532925199433,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]],PROJECTION[&quot;Transverse_Mercator&quot;],PARAMETER[&quot;latitude_of_origin&quot;,0],PARAMETER[&quot;central_meridian&quot;,-75],PARAMETER[&quot;scale_factor&quot;,0.9996],PARAMETER[&quot;false_easting&quot;,500000],PARAMETER[&quot;false_northing&quot;,0],UNIT[&quot;metre&quot;,1,AUTHORITY[&quot;EPSG&quot;,&quot;9001&quot;]],AXIS[&quot;Easting&quot;,EAST],AXIS[&quot;Northing&quot;,NORTH],AUTHORITY[&quot;EPSG&quot;,&quot;32618&quot;]]</WKT>
+                <verticalDef model="constShift" geoidHeight="0"/>
+            </output>
+            <gcp>
+                <WKT>PROJCS[&quot;WGS 84 / UTM zone 18N&quot;,GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],PRIMEM[&quot;Greenwich&quot;,0,AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],UNIT[&quot;degree&quot;,0.0174532925199433,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]],PROJECTION[&quot;Transverse_Mercator&quot;],PARAMETER[&quot;latitude_of_origin&quot;,0],PARAMETER[&quot;central_meridian&quot;,-75],PARAMETER[&quot;scale_factor&quot;,0.9996],PARAMETER[&quot;false_easting&quot;,500000],PARAMETER[&quot;false_northing&quot;,0],UNIT[&quot;metre&quot;,1,AUTHORITY[&quot;EPSG&quot;,&quot;9001&quot;]],AXIS[&quot;Easting&quot;,EAST],AXIS[&quot;Northing&quot;,NORTH],AUTHORITY[&quot;EPSG&quot;,&quot;32618&quot;]]</WKT>
+                <verticalDef model="constShift" geoidHeight="0"/>
+            </gcp>
+            <image>
+                <WKT>GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],TOWGS84[0,0,0,0,0,0,0],AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],PRIMEM[&quot;Greenwich&quot;,0,AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],UNIT[&quot;degree&quot;,0.01745329251994328,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]]</WKT>
+                <verticalDef model="constShift" geoidHeight="0"/>
+            </image>
+        </coordinateSystems>
+        <gcps/>
+        <radiometry/>
+        <images>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0010.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:22:04</time>
+                <gps alt="54.72299999999999898" lat="37.32421841666666751" lng="-76.42983225000000402"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.01185</accuracyXY>
+                <accuracyZ>0.02056</accuracyZ>
+                <ori yaw="81.1" pitch="0.1" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0020.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:22:05</time>
+                <gps alt="54.68800000000000239" lat="37.32421825000000126" lng="-76.42983072222222063"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.01217</accuracyXY>
+                <accuracyZ>0.02081</accuracyZ>
+                <ori yaw="81" pitch="0.1" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0030.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:22:09</time>
+                <gps alt="54.65599999999999881" lat="37.32424008333333632" lng="-76.42965452777778523"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.011885</accuracyXY>
+                <accuracyZ>0.02052</accuracyZ>
+                <ori yaw="80.5" pitch="0" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0040.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:22:12</time>
+                <gps alt="54.78699999999999903" lat="37.32426086111111374" lng="-76.42948397222222923"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.01246</accuracyXY>
+                <accuracyZ>0.02121</accuracyZ>
+                <ori yaw="81" pitch="0.1" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0050.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:22:15</time>
+                <gps alt="54.78900000000000148" lat="37.32428188888889053" lng="-76.4293141944444443"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.012845</accuracyXY>
+                <accuracyZ>0.0215</accuracyZ>
+                <ori yaw="81.5" pitch="0" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0060.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:22:18</time>
+                <gps alt="54.78199999999999648" lat="37.32430177777778368" lng="-76.42914094444445539"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.01217</accuracyXY>
+                <accuracyZ>0.02081</accuracyZ>
+                <ori yaw="80.9" pitch="0" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0070.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:22:20</time>
+                <gps alt="54.78699999999999903" lat="37.32432280555556048" lng="-76.42897088888889812"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.012365</accuracyXY>
+                <accuracyZ>0.02078</accuracyZ>
+                <ori yaw="82" pitch="0" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0080.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:22:23</time>
+                <gps alt="54.77900000000000347" lat="37.32434330555555846" lng="-76.42879663888889752"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.01214</accuracyXY>
+                <accuracyZ>0.02078</accuracyZ>
+                <ori yaw="81.4" pitch="0.1" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0090.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:22:26</time>
+                <gps alt="54.74600000000000222" lat="37.3243633055555577" lng="-76.42862647222221995"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.01157</accuracyXY>
+                <accuracyZ>0.02016</accuracyZ>
+                <ori yaw="80.7" pitch="0.1" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0100.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:22:29</time>
+                <gps alt="54.74900000000000233" lat="37.32438391666666888" lng="-76.4284534722222304"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.01205</accuracyXY>
+                <accuracyZ>0.02066</accuracyZ>
+                <ori yaw="80.7" pitch="0" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0110.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:22:32</time>
+                <gps alt="54.77300000000000324" lat="37.32440658333333516" lng="-76.42828094444445242"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.01257</accuracyXY>
+                <accuracyZ>0.02119</accuracyZ>
+                <ori yaw="81.9" pitch="0.1" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0120.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:22:35</time>
+                <gps alt="54.70700000000000074" lat="37.32442630555556207" lng="-76.42810950000000503"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.012015</accuracyXY>
+                <accuracyZ>0.02056</accuracyZ>
+                <ori yaw="81.3" pitch="0.1" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0130.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:22:38</time>
+                <gps alt="54.74600000000000222" lat="37.32444733333333886" lng="-76.42793816666667794"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.011425</accuracyXY>
+                <accuracyZ>0.01994</accuracyZ>
+                <ori yaw="81.4" pitch="0.1" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0140.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:22:40</time>
+                <gps alt="54.78999999999999915" lat="37.32445550000000623" lng="-76.42786575000000937"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.011825</accuracyXY>
+                <accuracyZ>0.02058</accuracyZ>
+                <ori yaw="78.5" pitch="0.1" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0150.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:22:47</time>
+                <gps alt="54.7430000000000021" lat="37.32466447222222428" lng="-76.42787111111111642"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.01174</accuracyXY>
+                <accuracyZ>0.02052</accuracyZ>
+                <ori yaw="-26.7" pitch="0.1" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0160.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:22:50</time>
+                <gps alt="54.73799999999999955" lat="37.3246380000000002" lng="-76.42804919444445488"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.01147</accuracyXY>
+                <accuracyZ>0.02015</accuracyZ>
+                <ori yaw="-99.5" pitch="0.1" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0170.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:22:53</time>
+                <gps alt="54.77900000000000347" lat="37.32461877777777914" lng="-76.42821883333333233"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.012065</accuracyXY>
+                <accuracyZ>0.02066</accuracyZ>
+                <ori yaw="-100.3" pitch="0.1" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0180.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:22:56</time>
+                <gps alt="54.83899999999999864" lat="37.32459908333333942" lng="-76.42839011111111347"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.012355</accuracyXY>
+                <accuracyZ>0.0209</accuracyZ>
+                <ori yaw="-100.6" pitch="0.1" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0190.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:22:59</time>
+                <gps alt="54.81199999999999761" lat="37.32457805555555552" lng="-76.42856561111111091"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.012145</accuracyXY>
+                <accuracyZ>0.02085</accuracyZ>
+                <ori yaw="-101.5" pitch="0.1" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0200.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:23:02</time>
+                <gps alt="54.79200000000000159" lat="37.32455838888888877" lng="-76.42873672222222581"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.01235</accuracyXY>
+                <accuracyZ>0.02104</accuracyZ>
+                <ori yaw="-101.3" pitch="0.1" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0210.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:23:05</time>
+                <gps alt="54.77000000000000313" lat="37.32453747222222518" lng="-76.42890766666667446"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.01189</accuracyXY>
+                <accuracyZ>0.02053</accuracyZ>
+                <ori yaw="-100.9" pitch="0" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0220.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:23:08</time>
+                <gps alt="54.73700000000000188" lat="37.32451497222222514" lng="-76.42907827777777641"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.01229</accuracyXY>
+                <accuracyZ>0.02092</accuracyZ>
+                <ori yaw="-99.3" pitch="0.1" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0230.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:23:11</time>
+                <gps alt="54.71900000000000119" lat="37.32449319444445024" lng="-76.42925025000000971"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.01185</accuracyXY>
+                <accuracyZ>0.0205</accuracyZ>
+                <ori yaw="-99.7" pitch="0.1" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0240.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:23:14</time>
+                <gps alt="54.70400000000000063" lat="37.32447327777778412" lng="-76.42942413888889064"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.011875</accuracyXY>
+                <accuracyZ>0.0205</accuracyZ>
+                <ori yaw="-100.2" pitch="0.1" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0250.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:23:17</time>
+                <gps alt="54.70799999999999841" lat="37.32445350000000417" lng="-76.42959725000000049"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.01188</accuracyXY>
+                <accuracyZ>0.02049</accuracyZ>
+                <ori yaw="-100.4" pitch="0" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0260.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:23:20</time>
+                <gps alt="54.7569999999999979" lat="37.32443133333333662" lng="-76.42976822222222211"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.012365</accuracyXY>
+                <accuracyZ>0.02101</accuracyZ>
+                <ori yaw="-100.4" pitch="0.1" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0270.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:23:23</time>
+                <gps alt="54.72800000000000153" lat="37.32441072222222544" lng="-76.4299426944444491"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.011945</accuracyXY>
+                <accuracyZ>0.0206</accuracyZ>
+                <ori yaw="-100.4" pitch="0.1" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0280.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:23:26</time>
+                <gps alt="54.73100000000000165" lat="37.32439052777777988" lng="-76.43011463888889523"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.0126</accuracyXY>
+                <accuracyZ>0.0214</accuracyZ>
+                <ori yaw="-100.4" pitch="0" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0290.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:23:27</time>
+                <gps alt="54.74799999999999756" lat="37.32438683333333529" lng="-76.43014402777778571"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.01222</accuracyXY>
+                <accuracyZ>0.02085</accuracyZ>
+                <ori yaw="-96.4" pitch="0.1" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0300.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:23:34</time>
+                <gps alt="54.64300000000000068" lat="37.32459702777778432" lng="-76.43014058333334049"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.01225</accuracyXY>
+                <accuracyZ>0.02078</accuracyZ>
+                <ori yaw="20.2" pitch="0" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0310.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:23:37</time>
+                <gps alt="54.67600000000000193" lat="37.32461522222222783" lng="-76.42996150000000455"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.01185</accuracyXY>
+                <accuracyZ>0.02023</accuracyZ>
+                <ori yaw="79.4" pitch="0" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0320.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:23:40</time>
+                <gps alt="54.75300000000000011" lat="37.32463619444444447" lng="-76.42979080555555527"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.011905</accuracyXY>
+                <accuracyZ>0.02031</accuracyZ>
+                <ori yaw="79.8" pitch="0" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0330.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:23:43</time>
+                <gps alt="54.76299999999999812" lat="37.32465727777778142" lng="-76.42961891666666929"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.01198</accuracyXY>
+                <accuracyZ>0.02046</accuracyZ>
+                <ori yaw="79.9" pitch="0.1" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0340.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:23:46</time>
+                <gps alt="54.77199999999999847" lat="37.32467900000000327" lng="-76.42944508333333431"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.012425</accuracyXY>
+                <accuracyZ>0.02084</accuracyZ>
+                <ori yaw="79.9" pitch="0.1" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0350.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:23:49</time>
+                <gps alt="54.72999999999999687" lat="37.32469952777778133" lng="-76.4292745277777783"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.011975</accuracyXY>
+                <accuracyZ>0.02044</accuracyZ>
+                <ori yaw="80" pitch="0.1" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0360.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:23:52</time>
+                <gps alt="54.7289999999999992" lat="37.32472083333333757" lng="-76.42910013888889864"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.012375</accuracyXY>
+                <accuracyZ>0.02076</accuracyZ>
+                <ori yaw="80" pitch="0" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0370.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:23:55</time>
+                <gps alt="54.72200000000000131" lat="37.32474161111111499" lng="-76.42892988888888794"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.011965</accuracyXY>
+                <accuracyZ>0.0204</accuracyZ>
+                <ori yaw="80.1" pitch="0.1" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0380.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:23:58</time>
+                <gps alt="54.77300000000000324" lat="37.32476297222222428" lng="-76.42875655555556591"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.011805</accuracyXY>
+                <accuracyZ>0.02016</accuracyZ>
+                <ori yaw="80.2" pitch="0" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0390.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:24:01</time>
+                <gps alt="54.81300000000000239" lat="37.32478294444445055" lng="-76.42858305555556342"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.011855</accuracyXY>
+                <accuracyZ>0.02026</accuracyZ>
+                <ori yaw="80.2" pitch="0" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0400.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:24:04</time>
+                <gps alt="54.77199999999999847" lat="37.32480341666666845" lng="-76.4284131666666724"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.012025</accuracyXY>
+                <accuracyZ>0.02053</accuracyZ>
+                <ori yaw="80.2" pitch="0" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0410.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:24:07</time>
+                <gps alt="54.7710000000000008" lat="37.32482447222222532" lng="-76.42824066666666738"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.01188</accuracyXY>
+                <accuracyZ>0.02019</accuracyZ>
+                <ori yaw="79.8" pitch="0.1" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0420.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:24:10</time>
+                <gps alt="54.7430000000000021" lat="37.32484513888888955" lng="-76.42806719444445207"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.01233</accuracyXY>
+                <accuracyZ>0.02075</accuracyZ>
+                <ori yaw="79.8" pitch="0.1" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0430.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:24:13</time>
+                <gps alt="54.73799999999999955" lat="37.32486780555555583" lng="-76.42789641666666967"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.011945</accuracyXY>
+                <accuracyZ>0.02048</accuracyZ>
+                <ori yaw="80.5" pitch="0" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0440.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:24:14</time>
+                <gps alt="54.7430000000000021" lat="37.32487127777778113" lng="-76.42785919444445142"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.012045</accuracyXY>
+                <accuracyZ>0.02101</accuracyZ>
+                <ori yaw="77.4" pitch="0.1" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0450.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:24:21</time>
+                <gps alt="54.80499999999999972" lat="37.32508080555555807" lng="-76.42786369444445427"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.011875</accuracyXY>
+                <accuracyZ>0.02078</accuracyZ>
+                <ori yaw="-25.4" pitch="0.1" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0460.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:24:24</time>
+                <gps alt="54.74000000000000199" lat="37.32505255555555834" lng="-76.42804536111111702"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.011415</accuracyXY>
+                <accuracyZ>0.01988</accuracyZ>
+                <ori yaw="-100.9" pitch="0.1" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0470.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:24:27</time>
+                <gps alt="54.78999999999999915" lat="37.32503322222222408" lng="-76.42821419444445041"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.012045</accuracyXY>
+                <accuracyZ>0.02061</accuracyZ>
+                <ori yaw="-100" pitch="0" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0480.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:24:30</time>
+                <gps alt="54.79599999999999937" lat="37.32501138888888903" lng="-76.42838700000000074"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.012505</accuracyXY>
+                <accuracyZ>0.02107</accuracyZ>
+                <ori yaw="-99.6" pitch="0.1" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0490.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:24:33</time>
+                <gps alt="54.80400000000000205" lat="37.32499188888889563" lng="-76.42855902777777999"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.012</accuracyXY>
+                <accuracyZ>0.02055</accuracyZ>
+                <ori yaw="-100.3" pitch="0.1" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0500.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:24:36</time>
+                <gps alt="54.80400000000000205" lat="37.32497269444444754" lng="-76.42872897222223116"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.011535</accuracyXY>
+                <accuracyZ>0.02008</accuracyZ>
+                <ori yaw="-101.4" pitch="0.1" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0510.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:24:39</time>
+                <gps alt="54.77199999999999847" lat="37.32495186111111707" lng="-76.42890175000000852"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.01145</accuracyXY>
+                <accuracyZ>0.01996</accuracyZ>
+                <ori yaw="-100.7" pitch="0" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0520.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:24:42</time>
+                <gps alt="54.72099999999999653" lat="37.32492980555555562" lng="-76.42907375000000059"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.01188</accuracyXY>
+                <accuracyZ>0.02049</accuracyZ>
+                <ori yaw="-100.3" pitch="0.1" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0530.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:24:45</time>
+                <gps alt="54.71500000000000341" lat="37.32490691666667004" lng="-76.4292471111111098"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.011965</accuracyXY>
+                <accuracyZ>0.02061</accuracyZ>
+                <ori yaw="-99.9" pitch="0.1" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0540.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:24:48</time>
+                <gps alt="54.73400000000000176" lat="37.32488697222222385" lng="-76.42941841666667813"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.0119</accuracyXY>
+                <accuracyZ>0.02045</accuracyZ>
+                <ori yaw="-100.1" pitch="0.1" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0550.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:24:51</time>
+                <gps alt="54.74199999999999733" lat="37.32486700000000468" lng="-76.42959141666666767"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.011835</accuracyXY>
+                <accuracyZ>0.02031</accuracyZ>
+                <ori yaw="-100.3" pitch="0" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0560.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:24:54</time>
+                <gps alt="54.76500000000000057" lat="37.32484625000000023" lng="-76.42976375000000644"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.01174</accuracyXY>
+                <accuracyZ>0.02022</accuracyZ>
+                <ori yaw="-100.3" pitch="0" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0570.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:24:57</time>
+                <gps alt="54.80400000000000205" lat="37.32482491666667102" lng="-76.42993716666667581"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.011825</accuracyXY>
+                <accuracyZ>0.02031</accuracyZ>
+                <ori yaw="-100.3" pitch="0.1" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0580.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:25:00</time>
+                <gps alt="54.79599999999999937" lat="37.32480419444444664" lng="-76.43010780555556494"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.0118</accuracyXY>
+                <accuracyZ>0.02021</accuracyZ>
+                <ori yaw="-100.3" pitch="0" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0590.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:25:02</time>
+                <gps alt="54.77799999999999869" lat="37.3247982777777807" lng="-76.43014794444444249"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.011535</accuracyXY>
+                <accuracyZ>0.01975</accuracyZ>
+                <ori yaw="-96.4" pitch="0" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0600.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:25:08</time>
+                <gps alt="54.72099999999999653" lat="37.32501072222222405" lng="-76.43014286111112199"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.012175</accuracyXY>
+                <accuracyZ>0.02054</accuracyZ>
+                <ori yaw="21.3" pitch="0" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0610.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:25:12</time>
+                <gps alt="54.73899999999999721" lat="37.32502838888888874" lng="-76.42996466666667743"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.01195</accuracyXY>
+                <accuracyZ>0.02011</accuracyZ>
+                <ori yaw="79.5" pitch="0.1" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0620.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:25:15</time>
+                <gps alt="54.74499999999999744" lat="37.32504983333333826" lng="-76.42979538888889124"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.01138</accuracyXY>
+                <accuracyZ>0.01962</accuracyZ>
+                <ori yaw="80.3" pitch="0" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0630.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:25:17</time>
+                <gps alt="54.76500000000000057" lat="37.32507225000000517" lng="-76.42962263888888685"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.01141</accuracyXY>
+                <accuracyZ>0.01964</accuracyZ>
+                <ori yaw="81.8" pitch="0.1" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0640.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:25:21</time>
+                <gps alt="54.77300000000000324" lat="37.32509297222222244" lng="-76.42944941666667091"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.01146</accuracyXY>
+                <accuracyZ>0.01976</accuracyZ>
+                <ori yaw="81.1" pitch="0.1" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0650.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:25:23</time>
+                <gps alt="54.76899999999999835" lat="37.32511275000000239" lng="-76.42927858333334257"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.011935</accuracyXY>
+                <accuracyZ>0.02019</accuracyZ>
+                <ori yaw="80.2" pitch="0" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0660.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:25:26</time>
+                <gps alt="54.72099999999999653" lat="37.32513152777777776" lng="-76.42910572222223209"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.01157</accuracyXY>
+                <accuracyZ>0.02009</accuracyZ>
+                <ori yaw="79.7" pitch="0" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0670.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:25:29</time>
+                <gps alt="54.69899999999999807" lat="37.32515336111111282" lng="-76.42893341666666629"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.011995</accuracyXY>
+                <accuracyZ>0.02037</accuracyZ>
+                <ori yaw="80.1" pitch="0" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0680.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:25:32</time>
+                <gps alt="54.72599999999999909" lat="37.32517430555555649" lng="-76.42875933333333194"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.01233</accuracyXY>
+                <accuracyZ>0.02061</accuracyZ>
+                <ori yaw="80.5" pitch="0.1" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0690.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:25:35</time>
+                <gps alt="54.70400000000000063" lat="37.32519638888889091" lng="-76.42858994444445386"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.01169</accuracyXY>
+                <accuracyZ>0.01984</accuracyZ>
+                <ori yaw="81.1" pitch="0.1" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0700.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:25:38</time>
+                <gps alt="54.79699999999999704" lat="37.32521738888889473" lng="-76.42841675000001089"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.011295</accuracyXY>
+                <accuracyZ>0.0196</accuracyZ>
+                <ori yaw="80.8" pitch="0.1" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0710.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:25:41</time>
+                <gps alt="54.80700000000000216" lat="37.32523719444444765" lng="-76.42824436111111197"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.01198</accuracyXY>
+                <accuracyZ>0.02039</accuracyZ>
+                <ori yaw="81" pitch="0.1" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0720.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:25:44</time>
+                <gps alt="54.8019999999999996" lat="37.3252593611111152" lng="-76.42807133333333525"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.01137</accuracyXY>
+                <accuracyZ>0.01969</accuracyZ>
+                <ori yaw="80.2" pitch="0" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0730.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:25:47</time>
+                <gps alt="54.78199999999999648" lat="37.32527744444444551" lng="-76.42790041666667378"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.011945</accuracyXY>
+                <accuracyZ>0.02027</accuracyZ>
+                <ori yaw="80.4" pitch="0.1" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0740.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:25:49</time>
+                <gps alt="54.74099999999999966" lat="37.325281027777784" lng="-76.42785344444445172"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.011705</accuracyXY>
+                <accuracyZ>0.02029</accuracyZ>
+                <ori yaw="76.7" pitch="0" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0750.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:25:55</time>
+                <gps alt="54.77799999999999869" lat="37.32549502777778372" lng="-76.42785899999999799"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.01194</accuracyXY>
+                <accuracyZ>0.02059</accuracyZ>
+                <ori yaw="-25.1" pitch="0.1" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0760.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:25:59</time>
+                <gps alt="54.7640000000000029" lat="37.3254674166666689" lng="-76.42803994444444982"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.01156</accuracyXY>
+                <accuracyZ>0.01991</accuracyZ>
+                <ori yaw="-100.8" pitch="0.1" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0770.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:26:02</time>
+                <gps alt="54.81000000000000227" lat="37.32544827777778096" lng="-76.428207277777787"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.011565</accuracyXY>
+                <accuracyZ>0.01991</accuracyZ>
+                <ori yaw="-100.7" pitch="0" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0780.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:26:05</time>
+                <gps alt="54.7879999999999967" lat="37.32542575000000085" lng="-76.4283811944444551"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.011545</accuracyXY>
+                <accuracyZ>0.01985</accuracyZ>
+                <ori yaw="-99.8" pitch="0" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0790.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:26:08</time>
+                <gps alt="54.74099999999999966" lat="37.32540625000000034" lng="-76.42854897222223087"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.011965</accuracyXY>
+                <accuracyZ>0.02035</accuracyZ>
+                <ori yaw="-99.7" pitch="0" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0800.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:26:11</time>
+                <gps alt="54.77400000000000091" lat="37.32538469444444473" lng="-76.42872305555556522"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.011525</accuracyXY>
+                <accuracyZ>0.01982</accuracyZ>
+                <ori yaw="-100.3" pitch="0" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0810.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:26:14</time>
+                <gps alt="54.68200000000000216" lat="37.32536411111111363" lng="-76.42889533333334384"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.012025</accuracyXY>
+                <accuracyZ>0.02039</accuracyZ>
+                <ori yaw="-99.6" pitch="0" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0820.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:26:17</time>
+                <gps alt="54.7120000000000033" lat="37.32534486111111249" lng="-76.42906908333333149"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.01214</accuracyXY>
+                <accuracyZ>0.02062</accuracyZ>
+                <ori yaw="-100.7" pitch="0.1" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0830.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:26:20</time>
+                <gps alt="54.78399999999999892" lat="37.325324694444447" lng="-76.42924047222223294"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.011625</accuracyXY>
+                <accuracyZ>0.02003</accuracyZ>
+                <ori yaw="-100.5" pitch="0.1" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0840.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:26:23</time>
+                <gps alt="54.76100000000000279" lat="37.32530319444444444" lng="-76.42941238888889188"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.011605</accuracyXY>
+                <accuracyZ>0.01994</accuracyZ>
+                <ori yaw="-100" pitch="0.1" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0850.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:26:26</time>
+                <gps alt="54.73899999999999721" lat="37.32527905555556202" lng="-76.4295868333333317"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.01164</accuracyXY>
+                <accuracyZ>0.01992</accuracyZ>
+                <ori yaw="-99.2" pitch="0.1" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0860.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:26:29</time>
+                <gps alt="54.76100000000000279" lat="37.32525888888888943" lng="-76.42975961111110905"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.011525</accuracyXY>
+                <accuracyZ>0.01982</accuracyZ>
+                <ori yaw="-100.1" pitch="0.1" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0870.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:26:32</time>
+                <gps alt="54.73400000000000176" lat="37.32523911111111659" lng="-76.42993041666666443"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.01198</accuracyXY>
+                <accuracyZ>0.0203</accuracyZ>
+                <ori yaw="-100.2" pitch="0" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0880.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:26:35</time>
+                <gps alt="54.73700000000000188" lat="37.32521869444444462" lng="-76.43010141666667323"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.011505</accuracyXY>
+                <accuracyZ>0.01984</accuracyZ>
+                <ori yaw="-99.7" pitch="0.1" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0890.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:26:36</time>
+                <gps alt="54.73100000000000165" lat="37.32521194444444745" lng="-76.43015102777778225"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.01159</accuracyXY>
+                <accuracyZ>0.0201</accuracyZ>
+                <ori yaw="-96.6" pitch="0.1" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0900.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:26:43</time>
+                <gps alt="54.76500000000000057" lat="37.32542283333333444" lng="-76.43014800000000264"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.011665</accuracyXY>
+                <accuracyZ>0.02034</accuracyZ>
+                <ori yaw="21.7" pitch="0" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0910.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:26:46</time>
+                <gps alt="54.72999999999999687" lat="37.32544200000000245" lng="-76.42996677777777847"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.01121</accuracyXY>
+                <accuracyZ>0.01934</accuracyZ>
+                <ori yaw="81.1" pitch="0" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0920.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:26:49</time>
+                <gps alt="54.73299999999999699" lat="37.32546322222222557" lng="-76.42979683333334151"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.01136</accuracyXY>
+                <accuracyZ>0.01959</accuracyZ>
+                <ori yaw="80.5" pitch="0.1" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0930.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:26:52</time>
+                <gps alt="54.67199999999999704" lat="37.32548263888889295" lng="-76.42962838888888655"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.01125</accuracyXY>
+                <accuracyZ>0.01943</accuracyZ>
+                <ori yaw="79.9" pitch="0.1" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0940.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:26:55</time>
+                <gps alt="54.71900000000000119" lat="37.32550536111111228" lng="-76.42945702777778649"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.011855</accuracyXY>
+                <accuracyZ>0.02003</accuracyZ>
+                <ori yaw="81.4" pitch="0" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+            <image path="E:/CaptSinclair111422/101FPLAN/DJI_0950.JPG" group="group1" enabled="true">
+                <camera name="FC6360_5.7_1600x1300" id="0"/>
+                <time>2022:11:14 11:26:57</time>
+                <gps alt="54.70600000000000307" lat="37.32551102777777885" lng="-76.42938588888888773"/>
+                <xyz x="0" y="0" z="0"/>
+                <accuracyXY>0.01187</accuracyXY>
+                <accuracyZ>0.02023</accuracyZ>
+                <ori yaw="81.7" pitch="0.1" roll="0" perpCamera="true"/>
+                <accuracyOri yaw="15" pitch="10" roll="10"/>
+            </image>
+        </images>
+        <indexRegions/>
+        <indexClasses/>
+        <objects>
+            <object name="Clipping Box" type="CLIPPING_BOX" centerX="373389" centerY="4131871" centerZ="55" sizeX="5" sizeY="5" sizeZ="5" rotationZ="0" fresh="true"/>
+            <object name="Unclassified" type="POINT_GROUP" groupId="0" classificationId="0" locked="false"/>
+            <object name="Disabled" type="POINT_GROUP" groupId="1" classificationId="0" locked="false"/>
+            <object name="Ground" type="POINT_GROUP" groupId="100" classificationId="0" locked="false"/>
+            <object name="Road Surface" type="POINT_GROUP" groupId="106" classificationId="0" locked="false"/>
+            <object name="High Vegetation" type="POINT_GROUP" groupId="102" classificationId="0" locked="false"/>
+            <object name="Building" type="POINT_GROUP" groupId="103" classificationId="0" locked="false"/>
+            <object name="Human Made Object" type="POINT_GROUP" groupId="109" classificationId="0" locked="false"/>
+        </objects>
+    </inputs>
+</pix4dmapper>

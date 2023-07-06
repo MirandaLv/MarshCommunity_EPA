@@ -1,4 +1,9 @@
 
+Data source:
+Drone imagery: ccrmdrive:\Projects\EPA marsh migration 2022-2023\Drone
+Planet: cmap22/ EPA_marsh_migration
+
+Data processing of polygon data, and creating the labeled points for training the model.
 1. Fixing geometry errors of each polygons representing the locations of the marsh community.
 - QGIS tool: vector geometry -> Fix geometries, the fixed polygon shapefiles are saved under the data/processing_data/vectors/...
 2. Randomly generate sample points from each marsh community polygons

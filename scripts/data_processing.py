@@ -19,6 +19,7 @@ from sklearn.cluster import KMeans
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+
 root_dir = up(os.getcwd())
 
 # set file paths

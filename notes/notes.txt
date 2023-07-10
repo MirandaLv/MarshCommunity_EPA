@@ -3,6 +3,9 @@ Data source:
 Drone imagery: ccrmdrive:\Projects\EPA marsh migration 2022-2023\Drone
 Planet: cmap22/ EPA_marsh_migration
 
+
+All raw data are collected in projection EPSG:32618, except data from BrownsBay, before running analysis for BrownsBay, the data is reprojected to EPSG:32618.
+
 Data processing of polygon data, and creating the labeled points for training the model.
 1. Fixing geometry errors of each polygons representing the locations of the marsh community.
 - QGIS tool: vector geometry -> Fix geometries, the fixed polygon shapefiles are saved under the data/processing_data/vectors/...
@@ -19,3 +22,11 @@ Data processing of polygon data, and creating the labeled points for training th
 - Save to RandomPoints_Capt_Alterniflora.geojson
 
 
+
+BrownsbayAlternaflora
+- Fix geometry
+- Remove polygons that are overlapped with BrownsbayJuncus
+- Random points in Extent (Number of points 2000, minimum distance between points 5m) -> 2000 points.
+- Extract the points that are within and overlap with BrownsbayAlternaflora -> 801.
+- Since the Juncus layer is overlapped with the BrownsbayAlternaflora geometry, extract points that are within and overlap with BrownsbayJuncus -> 189 within BrownsbayJuncus, and save as random points representing Juncus in Brownsbay (RandomPoints_BrownBay_Juncus.shp)
+- Save the rest points as random points representing Alternaflora in Brownsbay (RandomPoints_BrownBay_Alternaflora.shp).

@@ -11,17 +11,19 @@ Data processing of polygon data, and creating the labeled points for training th
 - QGIS tool: vector geometry -> Fix geometries, the fixed polygon shapefiles are saved under the data/processing_data/vectors/...
 2. Randomly generate sample points from each marsh community polygons
 - QGIS tool: vector -> research tools -> Random points in Extents
+
+Maryus_juncus
 - Maryus_juncus: 1000 points
 - Select points that are within the fixed geometry Maryus_juncus file.
 - Save to RandomPoints_Maryus_Juncus.geojson
 
+CaptSinclairJuncus
 - CaptSinclairJuncus: Random points in Polygons (200 points, minimum distance between points 10m, Random seed 100).
 - Save to RandomPoints_Capt_Juncus.geojson
 
+CaptAlternaflora
 - CaptAlternaflora: Fix geometry; Random points in Extents; Number of points: 500; Minimum distance between points (5m), because of the spatial extent, if setting the minimum distance 10m as the same as the Maryus juncus layer, there will be no random points generated)
 - Save to RandomPoints_Capt_Alterniflora.geojson
-
-
 
 BrownsbayAlternaflora
 - Fix geometry
@@ -30,3 +32,8 @@ BrownsbayAlternaflora
 - Extract the points that are within and overlap with BrownsbayAlternaflora -> 801.
 - Since the Juncus layer is overlapped with the BrownsbayAlternaflora geometry, extract points that are within and overlap with BrownsbayJuncus -> 189 within BrownsbayJuncus, and save as random points representing Juncus in Brownsbay (RandomPoints_BrownBay_Juncus.shp)
 - Save the rest points as random points representing Alternaflora in Brownsbay (RandomPoints_BrownBay_Alternaflora.shp).
+
+
+All sample points data
+- Combine all the above random points created from CaptSinclair, Maryus, and Brownsbay -> Sample_combined.geojson
+

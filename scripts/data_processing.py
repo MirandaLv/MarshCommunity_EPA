@@ -7,14 +7,6 @@ import rasterio
 import pandas as pd
 import geopandas as gpd
 import numpy as np
-from glob import glob
-
-# machine learning
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.metrics import classification_report, accuracy_score, confusion_matrix
-
 
 # visualization
 import matplotlib.pyplot as plt
@@ -49,37 +41,37 @@ pts_gdf['type_class'] = pts_gdf['type'].apply(lambda x: 1 if x=='juncus' else 2)
 
 # read in image data
 image_src = rasterio.open(image_path)
-
-# plot the image in RGB Composite Image
-image_array = image_src.read()
-rgb = ep.plot_rgb(image_array,
-                  rgb=(5,3,1),
-                  figsize=(10, 16))
-plt.show()
-
-# plot the image in RGB Composite Image with Stretch
-ep.plot_rgb(image_array,
-            rgb=(5,3,1),
-            stretch=True,
-            str_clip=0.2,
-            figsize=(10, 16))
-plt.show()
-
-# Histograms of the image bands
-colors = ['tomato', 'navy', 'MediumSpringGreen', 'lightblue', 'orange', 'blue',
-          'maroon', 'purple']
-
-ep.hist(image_array,
-        colors = colors,
-        title=[f'Band-{i}' for i in range(1, 9)],
-        cols=3,
-        alpha=0.5,
-        figsize = (12, 10))
-
-plt.show()
+#
+# # plot the image in RGB Composite Image
+# image_array = image_src.read()
+# rgb = ep.plot_rgb(image_array,
+#                   rgb=(5,3,1),
+#                   figsize=(10, 16))
+# # plt.show()
+#
+# # plot the image in RGB Composite Image with Stretch
+# ep.plot_rgb(image_array,
+#             rgb=(5,3,1),
+#             stretch=True,
+#             str_clip=0.2,
+#             figsize=(10, 16))
+# # plt.show()
+#
+# # Histograms of the image bands
+# colors = ['tomato', 'navy', 'MediumSpringGreen', 'lightblue', 'orange', 'blue',
+#           'maroon', 'purple']
+#
+# ep.hist(image_array,
+#         colors = colors,
+#         title=[f'Band-{i}' for i in range(1, 9)],
+#         cols=3,
+#         alpha=0.5,
+#         figsize = (12, 10))
+#
+# # plt.show()
 
 # get NDVI
-ndvi = (image_array[7] - image_array[5])/ (image_array[7] + image_array[5])
+# ndvi = (image_array[7] - image_array[5])/ (image_array[7] + image_array[5])
 # ndvi = es.normalized_diff(image_array[7], image_array[5])
 
 
@@ -97,8 +89,26 @@ pts_gdf['B6'] = pts_gdf.apply(lambda x: x['Raster_Value'][5], axis=1)
 pts_gdf['B7'] = pts_gdf.apply(lambda x: x['Raster_Value'][6], axis=1)
 pts_gdf['B8'] = pts_gdf.apply(lambda x: x['Raster_Value'][7], axis=1)
 
+# deleting not use columns
 pts_gdf.drop(columns=['Raster_Value'], inplace=True)
-pts_gdf.to_file(os.path.join(root_dir, 'data/processing_data/vectors/points_planet.geojson'), driver='GeoJSON')
+pts_gdf.drop(columns=['rand_point'], inplace=True)
+# pts_gdf.to_file(os.path.join(root_dir, 'data/processing_data/vectors/points_planet.geojson'), driver='GeoJSON')
+
+# data visualization
+df = pd.DataFrame(pts_gdf.drop(columns='geometry'))
+df.drop(columns=['type_class'], inplace=True)
+
+# grouped_df = df.groupby('type').agg({'B1': ['mean'], 'B2': ['mean'], 'B3': ['mean'],
+#                               'B4': ['mean'], 'B5': ['mean'], 'B6': ['mean'],
+#                                'B7': ['mean'], 'B8': ['mean']})
+
+grouped_df = df.groupby('type').mean()
+grouped_df = grouped_df.T
+index = pd.Index(['B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8'])
+grouped_df = grouped_df.set_index(index)
+grouped_df.plot()
+
+plt.show()
 
 
 

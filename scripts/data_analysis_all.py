@@ -43,7 +43,7 @@ gdf = gpd.read_file(points_data)
 gdf['ndvi'] = gdf.apply(lambda x: (x['B8'] - x['B6']) / (x['B8'] + x['B6']), axis=1)
 
 # feature selection
-X_data = gdf[['B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'ndvi']]
+X_data = gdf[['B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'ndvi', 'dem']]
 y_data = gdf['type_class']
 # scaler
 scaler = StandardScaler().fit(X_data)

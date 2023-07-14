@@ -37,7 +37,7 @@ alterniflora: 2
 
 # Loading data
 root_dir = up(os.getcwd())
-points_data = os.path.join(root_dir, 'data/processing_data/vectors/points_planet.geojson')
+points_data = os.path.join(root_dir, 'data/processing_data/vectors/points_planet_composite.geojson')
 
 gdf = gpd.read_file(points_data)
 gdf['ndvi'] = gdf.apply(lambda x: (x['B8'] - x['B6']) / (x['B8'] + x['B6']), axis=1)

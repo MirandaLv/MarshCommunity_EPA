@@ -33,7 +33,7 @@ root_dir = up(os.getcwd())
 
 # set file paths
 label_path = os.path.join(root_dir, 'data/processing_data/vectors/sample_combined.geojson')
-image_path = os.path.join(root_dir, 'data/processing_data/images/subregion_planet.tif')
+image_path = os.path.join(root_dir, 'data/processing_data/images/subregion_planet_composite.tif')
 
 # read in label data
 pts_gdf = gpd.read_file(label_path)
@@ -92,7 +92,8 @@ pts_gdf['B8'] = pts_gdf.apply(lambda x: x['Raster_Value'][7], axis=1)
 # deleting not use columns
 pts_gdf.drop(columns=['Raster_Value'], inplace=True)
 pts_gdf.drop(columns=['rand_point'], inplace=True)
-# pts_gdf.to_file(os.path.join(root_dir, 'data/processing_data/vectors/points_planet.geojson'), driver='GeoJSON')
+# pts_gdf.to_file(os.path.join(root_dir, 'data/processing_data/vectors/points_planet_composite.geojson'), driver='GeoJSON')
+
 
 # data visualization
 df = pd.DataFrame(pts_gdf.drop(columns='geometry'))

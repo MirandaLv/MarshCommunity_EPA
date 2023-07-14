@@ -34,6 +34,7 @@ root_dir = up(os.getcwd())
 # set file paths
 label_path = os.path.join(root_dir, 'data/processing_data/vectors/sample_combined.geojson')
 image_path = os.path.join(root_dir, 'data/processing_data/images/subregion_planet_composite.tif')
+dem_path = os.path.join(root_dir, 'data/processing_data/images/cbtb_dem_MarshComm_proj.tif')
 
 # read in label data
 pts_gdf = gpd.read_file(label_path)
@@ -92,6 +93,12 @@ pts_gdf['B8'] = pts_gdf.apply(lambda x: x['Raster_Value'][7], axis=1)
 # deleting not use columns
 pts_gdf.drop(columns=['Raster_Value'], inplace=True)
 pts_gdf.drop(columns=['rand_point'], inplace=True)
+
+# get the DEM data
+image_dem_src = rasterio.open(dem_path)
+pts_gdf['dem_value'] = [x for x in image_dem_src.sample(coords)]
+pts_gdf['dem_value'] = pts_gdf['dem_value'].apply(lambda x: x[0])
+
 # pts_gdf.to_file(os.path.join(root_dir, 'data/processing_data/vectors/points_planet_composite.geojson'), driver='GeoJSON')
 
 

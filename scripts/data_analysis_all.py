@@ -51,13 +51,17 @@ y_data = gdf['type_class']
 scaler = StandardScaler().fit(X_data)
 X_scaled = scaler.transform(X_data)
 
-# split data without ndvi
+# split data
 X_train, X_test, y_train, y_test = train_test_split(X_scaled, y_data, test_size=0.20, random_state=42, shuffle=True) # stratify = y_data.ravel()
+
+
 
 # parameter searching
 """
 Adding parameter searching code here
 """
+
+
 
 
 

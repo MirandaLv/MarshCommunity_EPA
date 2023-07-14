@@ -1,10 +1,11 @@
 
 Data source:
 Drone imagery: ccrmdrive:\Projects\EPA marsh migration 2022-2023\Drone
-Planet: cmap22/ EPA_marsh_migration
+Planet: cmap22/EPA_marsh_migration
+composite: Z:\EPA_marsh_migration\Maryus_CaptSinclair_02142023_composite
 
 
-All raw data are collected in projection EPSG:32618, except data from BrownsBay, before running analysis for BrownsBay, the data is reprojected to EPSG:32618.
+## All raw data are collected in projection EPSG:32618, except data from BrownsBay, before running analysis for BrownsBay, the data is reprojected to EPSG:32618.
 
 Data processing of polygon data, and creating the labeled points for training the model.
 1. Fixing geometry errors of each polygons representing the locations of the marsh community.
@@ -36,4 +37,19 @@ BrownsbayAlternaflora
 
 All sample points data
 - Combine all the above random points created from CaptSinclair, Maryus, and Brownsbay -> Sample_combined.geojson
+
+## Zooming to the study area
+- Select a region of interest (ROI) from the TMI, and save it as VA_TMI_selected.geojson.
+- The extent of VA_TMI_selected.geojson is used to clip the composite image and the dem.
+- DEM is projected to EPSG:32618, and the resolution is 1m.
+- The composite image is projected to EPSG:32618, and the resolution is 3m.
+
+## Running the data_processing.py to get a geojson file, which saves the coordinates of each sample point, and the corresponding image band/DEM values.
+
+## Running the data_analysis_all.py to get the training and testing data, and train the model with each algorithm.
+
+## Running the descriptive_analysis.py to get the descriptive statistics of the sample data in general.
+
+
+
 

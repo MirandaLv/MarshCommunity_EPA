@@ -13,11 +13,13 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
 import lightgbm as lgb
 import xgboost as xgb
+from sklearn import tree
 from sklearn.metrics import classification_report, accuracy_score, confusion_matrix
 
 # visualization
 import matplotlib.pyplot as plt
 import seaborn as sns
+import graphviz
 
 """
 # 1	Coastal Blue	443 (20)	Yes - with Sentinel-2 band 1
@@ -43,7 +45,7 @@ gdf = gpd.read_file(points_data)
 gdf['ndvi'] = gdf.apply(lambda x: (x['B8'] - x['B6']) / (x['B8'] + x['B6']), axis=1)
 
 # feature selection
-X_data = gdf[['B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'ndvi', 'dem']]
+X_data = gdf[['B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'ndvi', 'dem_value']]
 y_data = gdf['type_class']
 # scaler
 scaler = StandardScaler().fit(X_data)
@@ -53,9 +55,14 @@ X_scaled = scaler.transform(X_data)
 X_train, X_test, y_train, y_test = train_test_split(X_scaled, y_data, test_size=0.20, random_state=42, shuffle=True) # stratify = y_data.ravel()
 
 # parameter searching
+"""
+Adding parameter searching code here
+"""
 
 
-# K-NNC
+
+
+"""K-NNC"""
 knn = KNeighborsClassifier(n_neighbors=6)
 knn.fit(X_train, y_train)
 # Predict the labels of test data
@@ -64,7 +71,8 @@ print(f"Accuracy with K-NNC: {accuracy_score(y_test, knn_pred)*100}")
 print(classification_report(y_test, knn_pred))
 
 
-# SVM
+
+"""SVM"""
 svm = SVC(C=3.0, kernel='rbf', degree=6, cache_size=1024)
 # Fit Data
 svm.fit(X_train, y_train)
@@ -75,8 +83,9 @@ print(f"Accuracy with SVM: {accuracy_score(y_test, svm_pred)*100}")
 print(classification_report(y_test, svm_pred))
 
 
-# LightGBM
+
 """
+LightGBM
 -> Figure out parameters
 """
 d_train = lgb.Dataset(X_train, label=y_train)
@@ -99,13 +108,35 @@ lgb_pred = np.argmax(lgb_predictions, axis=1)
 print(f"Accuracy: {accuracy_score(y_test, lgb_pred)*100}")
 print(classification_report(y_test, lgb_pred))
 
-# decision tree
+
+"""
+Decision Tree
+"""
+tree_clf = tree.DecisionTreeClassifier()
+tree_clf = tree_clf.fit(X_train, y_train)
+tree_pred = tree_clf.predict(X_test)
+
+print(f"Accuracy with Decision Tree: {accuracy_score(y_test, tree_pred)*100}")
+print(classification_report(y_test, tree_pred))
+
+tree.plot_tree(tree_clf)
+dot_data = tree.export_graphviz(tree_clf, out_file=None)
+graph = graphviz.Source(dot_data)
+graph.render("../figures/DecisionTree")
 
 
-# random forest
+
+"""
+Random forest
+"""
 
 
-# xgboost
+
+
+
+"""
+xgboost
+"""
 
 
 

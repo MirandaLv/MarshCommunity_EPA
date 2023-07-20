@@ -4,6 +4,7 @@ Drone imagery: ccrmdrive:\Projects\EPA marsh migration 2022-2023\Drone
 Planet: cmap22/EPA_marsh_migration
 composite: Z:\EPA_marsh_migration\Maryus_CaptSinclair_02142023_composite
 
+Notes: https://docs.google.com/document/d/1QM2eMoZY4XH5v2CMWL-u4PF8Iy8PSVILhOBaMJ-Egfs/edit
 
 ## All raw data are collected in projection EPSG:32618, except data from BrownsBay, before running analysis for BrownsBay, the data is reprojected to EPSG:32618.
 

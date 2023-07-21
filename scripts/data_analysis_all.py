@@ -124,8 +124,8 @@ tree_clf = tree.DecisionTreeClassifier()
 tree_clf = tree_clf.fit(X_train, y_train)
 tree_pred = tree_clf.predict(X_test)
 
-# print(f"Accuracy with Decision Tree: {accuracy_score(y_test, tree_pred)*100}")
-# print(classification_report(y_test, tree_pred))
+print(f"Accuracy with Decision Tree: {accuracy_score(y_test, tree_pred)*100}")
+print(classification_report(y_test, tree_pred))
 
 tree.plot_tree(tree_clf)
 dot_data = tree.export_graphviz(tree_clf, out_file=None)
@@ -157,6 +157,7 @@ plt.savefig('../figures/rf_VariableImportance.png')
 rf_pred = rf_clf.predict(X_test)
 print(f"Accuracy with Random Forest: {accuracy_score(y_test, rf_pred)*100}")
 print(classification_report(y_test, rf_pred))
+
 
 
 """

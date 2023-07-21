@@ -56,5 +56,10 @@ All sample points data
 ## Running the descriptive_analysis.py to get the descriptive statistics of the sample data in general.
 
 
+To-do:
+- Research on the soil index, and add the soil index to the model.
+- Research water moisture index, and add the water moisture index to the model.
+- Seasonal analysis: compare the model performance in composite images acquired from different seasons.
+
 
 

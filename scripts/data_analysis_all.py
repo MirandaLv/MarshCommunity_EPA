@@ -139,7 +139,7 @@ Random forest
 
 
 """
-xgboost
+AdaBoost
 """
 
 

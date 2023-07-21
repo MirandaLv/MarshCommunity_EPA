@@ -1,3 +1,7 @@
+"""
+author: Miranda Lv
+Date: July, 2023
+"""
 
 Data source:
 Drone imagery: ccrmdrive:\Projects\EPA marsh migration 2022-2023\Drone

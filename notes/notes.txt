@@ -56,6 +56,16 @@ All sample points data
 ## Running the descriptive_analysis.py to get the descriptive statistics of the sample data in general.
 
 
+
+
+PlanetScope Data Retrieval
+- Export a list of scene metadata, which satisfies certain filter requirements (eg. small region geometry, date, cloud, instruments, etc) -> data/processing_data/planetMetadata.
+- Mark the scene that has none tidal influence.
+- Run ValidDataRetrival to download the selected scenes.
+- To-do: crop, composite, and mosaic. 
+
+
+
 To-do:
 - Research on the soil index, and add the soil index to the model.
 - Research water moisture index, and add the water moisture index to the model.

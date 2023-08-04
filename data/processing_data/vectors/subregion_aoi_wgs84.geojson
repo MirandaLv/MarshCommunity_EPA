@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "subregion_aoi_wgs84",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "MINX": 369654.0, "MINY": 4124517.0, "MAXX": 380085.0, "MAXY": 4136475.0, "CNTX": 374869.5, "CNTY": 4130496.0, "AREA": 124733898.0, "PERIM": 44778.0, "HEIGHT": 11958.0, "WIDTH": 10431.0 }, "geometry": { "type": "Polygon", "coordinates": [ [ [ -76.469895568583752, 37.258097992433079 ], [ -76.352297690990213, 37.259499805040491 ], [ -76.354229637619511, 37.367258497554829 ], [ -76.4719953783964, 37.365851240046055 ], [ -76.469895568583752, 37.258097992433079 ] ] ] } }
+]
+}

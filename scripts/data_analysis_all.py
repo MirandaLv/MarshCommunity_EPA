@@ -45,9 +45,13 @@ juncus: 1
 alterniflora: 2
 """
 
+
 # Loading data
+season = 'Jan-Mar' # Jan-Mar, Apr-Jun, July-Sep, Oct-Dec
+year = '2022'
+
 root_dir = up(os.getcwd())
-points_data = os.path.join(root_dir, 'data/processing_data/vectors/points_planet_compApr-Jun_2022.geojson')
+points_data = os.path.join(root_dir, 'data/processing_data/vectors/points_planet_comp_{}_{}.geojson'.format(season, year))
 
 gdf = gpd.read_file(points_data)
 gdf['ndvi'] = gdf.apply(lambda x: (x['B8'] - x['B6']) / (x['B8'] + x['B6']), axis=1)
@@ -61,7 +65,7 @@ scaler = StandardScaler().fit(X_data)
 X_scaled = scaler.transform(X_data)
 
 # split data
-X_train, X_test, y_train, y_test = train_test_split(X_scaled, y_data, test_size=0.50, random_state=42, shuffle=True) # , stratify = y_data.ravel()
+X_train, X_test, y_train, y_test = train_test_split(X_scaled, y_data, test_size=0.30, random_state=42, shuffle=True) # , stratify = y_data.ravel()
 
 
 print(X_train.shape)

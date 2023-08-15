@@ -19,6 +19,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import GridSearchCV
 import lightgbm as lgb
 import xgboost as xgb
 from sklearn import tree
@@ -47,7 +48,7 @@ alterniflora: 2
 
 
 # Loading data
-season = 'Jan-Mar' # Jan-Mar, Apr-Jun, July-Sep, Oct-Dec
+season = 'Apr-Jun' # Jan-Mar, Apr-Jun, July-Sep, Oct-Dec
 year = '2022'
 
 root_dir = up(os.getcwd())
@@ -81,6 +82,23 @@ Adding parameter searching code here
 
 
 """K-NNC"""
+# calculating the accuracy of models with different values of k
+knn_mean_acc = np.zeros(20)
+for i in range(1,21):
+    #Train Model and Predict
+    knn = KNeighborsClassifier(n_neighbors = i).fit(X_train,y_train)
+    yhat= knn.predict(X_test)
+    knn_mean_acc[i-1] = accuracy_score(y_test, yhat)*100
+
+loc = np.arange(1,21,step=1.0)
+plt.figure(figsize = (10, 6))
+plt.plot(range(1,21), knn_mean_acc)
+plt.xticks(loc)
+plt.xlabel('Number of Neighbors ')
+plt.ylabel('Accuracy')
+plt.savefig('../figures/knn_accuracy.png')
+
+# Train Model and Predict
 knn = KNeighborsClassifier(n_neighbors=6)
 knn.fit(X_train, y_train)
 # Predict the labels of test data
@@ -88,6 +106,18 @@ knn_pred = knn.predict(X_test)
 print(f"Accuracy with K-NNC: {accuracy_score(y_test, knn_pred)*100}")
 print(classification_report(y_test, knn_pred))
 
+
+# # Grid Search
+# # number of neighbors are chosen based on getting the knn_accuracy.png for each season.
+# grid_params = {'weights' : ['uniform','distance'],
+#                'metric' : ['minkowski','euclidean','manhattan']}
+#
+# gs = GridSearchCV(KNeighborsClassifier(5), grid_params, verbose = 1, cv=3, n_jobs = -1)
+# # fit the model on our train set
+# g_res = gs.fit(X_train, y_train)
+# # find the best score
+# print(g_res.best_score_)
+#
 
 
 """SVM"""
@@ -101,30 +131,30 @@ print(f"Accuracy with SVM: {accuracy_score(y_test, svm_pred)*100}")
 print(classification_report(y_test, svm_pred))
 
 
-
-"""
-LightGBM
--> Figure out parameters
-"""
-d_train = lgb.Dataset(X_train, label=y_train)
-# Parameters
-params={}
-params['learning_rate']=0.03
-params['boosting_type']='gbdt' #GradientBoostingDecisionTree
-params['objective']='multiclass' #Multi-class target feature
-params['metric']='multi_logloss' #metric for multi-class
-params['max_depth']=15
-params['num_class']=6 #no.of unique values in the target class not inclusive of the end value
-
-clf = lgb.train(params, d_train, 100)
-
-# prediction
-lgb_predictions = clf.predict(X_test)
-lgb_pred = np.argmax(lgb_predictions, axis=1)
-
-# Accuracy and Classification Report
-print(f"Accuracy with lgb: {accuracy_score(y_test, lgb_pred)*100}")
-print(classification_report(y_test, lgb_pred))
+#
+# """
+# LightGBM
+# -> Figure out parameters
+# """
+# d_train = lgb.Dataset(X_train, label=y_train)
+# # Parameters
+# params={}
+# params['learning_rate']=0.03
+# params['boosting_type']='gbdt' #GradientBoostingDecisionTree
+# params['objective']='multiclass' #Multi-class target feature
+# params['metric']='multi_logloss' #metric for multi-class
+# params['max_depth']=15
+# params['num_class']=6 #no.of unique values in the target class not inclusive of the end value
+#
+# clf = lgb.train(params, d_train, 100)
+#
+# # prediction
+# lgb_predictions = clf.predict(X_test)
+# lgb_pred = np.argmax(lgb_predictions, axis=1)
+#
+# # Accuracy and Classification Report
+# print(f"Accuracy with lgb: {accuracy_score(y_test, lgb_pred)*100}")
+# print(classification_report(y_test, lgb_pred))
 
 
 """

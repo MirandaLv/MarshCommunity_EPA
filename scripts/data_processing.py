@@ -35,9 +35,12 @@ import earthpy.plot as ep
 
 root_dir = up(os.getcwd())
 
+year = '2022'
+season = 'Oct-Dec' # Apr-Jun, July-Sep, Oct-Dec, Jan-Mar
+
 # set file paths
 label_path = os.path.join(root_dir, 'data/processing_data/vectors/sample_combined.geojson')
-image_path = os.path.join(root_dir, 'data/processing_data/images/subregion_planet_composite.tif')
+image_path = os.path.join(root_dir, 'data/raw/images/seasonal_mosaic/composite_{}_{}.tif'.format(season, year)) # data/processing_data/images/subregion_planet_composite.tif
 dem_path = os.path.join(root_dir, 'data/processing_data/images/cbtb_dem_MarshComm_proj.tif')
 
 # read in label data
@@ -105,6 +108,8 @@ pts_gdf['dem_value'] = pts_gdf['dem_value'].apply(lambda x: x[0])
 
 # pts_gdf.to_file(os.path.join(root_dir, 'data/processing_data/vectors/points_planet_composite.geojson'), driver='GeoJSON')
 
+pts_gdf.to_file(os.path.join(root_dir, 'data/processing_data/vectors/points_planet_comp_{}_{}.geojson'.format(season, year)), driver='GeoJSON')
+
 
 # data visualization
 df = pd.DataFrame(pts_gdf.drop(columns='geometry'))
@@ -116,7 +121,7 @@ df.drop(columns=['type_class'], inplace=True)
 
 grouped_df = df.groupby('type').mean()
 grouped_df = grouped_df.T
-index = pd.Index(['B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8'])
+index = pd.Index(['B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'dem_value'])
 grouped_df = grouped_df.set_index(index)
 grouped_df.plot()
 

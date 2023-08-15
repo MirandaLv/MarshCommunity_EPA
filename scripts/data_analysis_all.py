@@ -98,15 +98,6 @@ plt.xlabel('Number of Neighbors ')
 plt.ylabel('Accuracy')
 plt.savefig('../figures/knn_accuracy.png')
 
-# Train Model and Predict
-knn = KNeighborsClassifier(n_neighbors=6)
-knn.fit(X_train, y_train)
-# Predict the labels of test data
-knn_pred = knn.predict(X_test)
-print(f"Accuracy with K-NNC: {accuracy_score(y_test, knn_pred)*100}")
-print(classification_report(y_test, knn_pred))
-
-
 # # Grid Search
 # # number of neighbors are chosen based on getting the knn_accuracy.png for each season.
 # grid_params = {'weights' : ['uniform','distance'],
@@ -117,7 +108,15 @@ print(classification_report(y_test, knn_pred))
 # g_res = gs.fit(X_train, y_train)
 # # find the best score
 # print(g_res.best_score_)
-#
+
+# Train Model and Predict
+knn = KNeighborsClassifier(n_neighbors=6)
+knn.fit(X_train, y_train)
+# Predict the labels of test data
+knn_pred = knn.predict(X_test)
+print(f"Accuracy with K-NNC: {accuracy_score(y_test, knn_pred)*100}")
+print(classification_report(y_test, knn_pred))
+
 
 
 """SVM"""

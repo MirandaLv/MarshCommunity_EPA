@@ -19,7 +19,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
 from sklearn.ensemble import RandomForestClassifier
-# import lightgbm as lgb
+import lightgbm as lgb
 import xgboost as xgb
 from sklearn import tree
 from sklearn.metrics import classification_report, accuracy_score, confusion_matrix
@@ -101,30 +101,30 @@ print(f"Accuracy with SVM: {accuracy_score(y_test, svm_pred)*100}")
 print(classification_report(y_test, svm_pred))
 
 
-#
-# """
-# LightGBM
-# -> Figure out parameters
-# """
-# d_train = lgb.Dataset(X_train, label=y_train)
-# # Parameters
-# params={}
-# params['learning_rate']=0.03
-# params['boosting_type']='gbdt' #GradientBoostingDecisionTree
-# params['objective']='multiclass' #Multi-class target feature
-# params['metric']='multi_logloss' #metric for multi-class
-# params['max_depth']=15
-# params['num_class']=6 #no.of unique values in the target class not inclusive of the end value
-#
-# clf = lgb.train(params, d_train, 100)
-#
-# # prediction
-# lgb_predictions = clf.predict(X_test)
-# lgb_pred = np.argmax(lgb_predictions, axis=1)
-#
-# # Accuracy and Classification Report
-# # print(f"Accuracy: {accuracy_score(y_test, lgb_pred)*100}")
-# # print(classification_report(y_test, lgb_pred))
+
+"""
+LightGBM
+-> Figure out parameters
+"""
+d_train = lgb.Dataset(X_train, label=y_train)
+# Parameters
+params={}
+params['learning_rate']=0.03
+params['boosting_type']='gbdt' #GradientBoostingDecisionTree
+params['objective']='multiclass' #Multi-class target feature
+params['metric']='multi_logloss' #metric for multi-class
+params['max_depth']=15
+params['num_class']=6 #no.of unique values in the target class not inclusive of the end value
+
+clf = lgb.train(params, d_train, 100)
+
+# prediction
+lgb_predictions = clf.predict(X_test)
+lgb_pred = np.argmax(lgb_predictions, axis=1)
+
+# Accuracy and Classification Report
+print(f"Accuracy with lgb: {accuracy_score(y_test, lgb_pred)*100}")
+print(classification_report(y_test, lgb_pred))
 
 
 """

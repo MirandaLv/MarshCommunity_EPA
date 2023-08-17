@@ -120,6 +120,16 @@ print(classification_report(y_test, knn_pred))
 
 
 """SVM"""
+param_grid = {'C': [0.1,1, 10, 100], 'gamma': [1,0.1,0.01,0.001],'kernel': ['rbf', 'poly', 'sigmoid']}
+grid = GridSearchCV(SVC(),param_grid,refit=True,verbose=2)
+grid.fit(X_train,y_train)
+
+# Accuracy and Classification Report
+grid_predictions = grid.predict(X_test)
+print(f"Accuracy with SVM grid search: {accuracy_score(y_test, grid_predictions)*100}")
+print(classification_report(y_test,grid_predictions))#Output
+
+
 svm = SVC(C=3.0, kernel='rbf', degree=6, cache_size=1024)
 # Fit Data
 svm.fit(X_train, y_train)
@@ -128,6 +138,7 @@ svm_pred = svm.predict(X_test)
 # Accuracy and Classification Report
 print(f"Accuracy with SVM: {accuracy_score(y_test, svm_pred)*100}")
 print(classification_report(y_test, svm_pred))
+
 
 
 #
@@ -196,12 +207,6 @@ plt.savefig('../figures/rf_VariableImportance.png')
 rf_pred = rf_clf.predict(X_test)
 print(f"Accuracy with Random Forest: {accuracy_score(y_test, rf_pred)*100}")
 print(classification_report(y_test, rf_pred))
-
-
-
-"""
-AdaBoost
-"""
 
 
 

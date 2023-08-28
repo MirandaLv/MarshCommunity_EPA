@@ -7,11 +7,14 @@ Date: July, 2023
 import os
 from os.path import dirname as up
 import time
+import sys
+sys.path.append('../utils')
 
 # data processing
 import geopandas as gpd
 import numpy as np
 import pandas as pd
+import helpers
 
 # machine learning
 from sklearn.model_selection import train_test_split
@@ -55,11 +58,12 @@ root_dir = up(os.getcwd())
 points_data = os.path.join(root_dir, 'data/processing_data/vectors/points_planet_comp_{}_{}.geojson'.format(season, year))
 
 gdf = gpd.read_file(points_data)
-gdf['ndvi'] = gdf.apply(lambda x: (x['B8'] - x['B6']) / (x['B8'] + x['B6']), axis=1)
-gdf['ndwi'] = gdf.apply(lambda x: (x['B8'] - x['B4']) / (x['B8'] + x['B4']), axis=1)
+gdf['ndvi'] = gdf.apply(lambda x: helpers.cal_ndvi(x['B8'], x['B6']), axis=1)
+gdf['savi'] = gdf.apply(lambda x: helpers.cal_savi(x['B8'], x['B6']), axis=1)
+gdf['ndwi'] = gdf.apply(lambda x: helpers.cal_ndwi(x['B8'], x['B4']), axis=1)
 
 # feature selection
-X_data = gdf[['B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'ndvi', 'ndwi', 'dem_value']]
+X_data = gdf[['B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'ndvi', 'ndwi', 'savi','dem_value']]
 y_data = gdf['type_class']
 # scaler
 scaler = StandardScaler().fit(X_data)

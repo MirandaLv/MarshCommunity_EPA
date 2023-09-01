@@ -72,16 +72,7 @@ X_scaled = scaler.transform(X_data)
 # split data
 X_train, X_test, y_train, y_test = train_test_split(X_scaled, y_data, test_size=0.30, random_state=42, shuffle=True) # , stratify = y_data.ravel()
 
-
 print(X_train.shape)
-
-# parameter searching
-"""
-Adding parameter searching code here
-"""
-
-
-
 
 
 
@@ -102,6 +93,7 @@ plt.xlabel('Number of Neighbors ')
 plt.ylabel('Accuracy')
 plt.savefig('../figures/knn_accuracy.png')
 
+# # parameter searching
 # # Grid Search
 # # number of neighbors are chosen based on getting the knn_accuracy.png for each season.
 # grid_params = {'weights' : ['uniform','distance'],

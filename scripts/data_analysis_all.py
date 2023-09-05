@@ -51,7 +51,7 @@ alterniflora: 2
 
 
 # Loading data
-season = 'Apr-Jun' # Jan-Mar, Apr-Jun, July-Sep, Oct-Dec
+season = 'Oct-Dec' # Jan-Mar, Apr-Jun, July-Sep, Oct-Dec
 year = '2022'
 
 root_dir = up(os.getcwd())
@@ -91,7 +91,7 @@ plt.plot(range(1,21), knn_mean_acc)
 plt.xticks(loc)
 plt.xlabel('Number of Neighbors ')
 plt.ylabel('Accuracy')
-plt.savefig('../figures/knn_accuracy.png')
+plt.savefig('../figures/knn_accuracy_{}_{}.png'.format(season, year))
 
 # # parameter searching
 # # Grid Search
@@ -115,15 +115,15 @@ print(classification_report(y_test, knn_pred))
 
 
 
-"""SVM"""
-param_grid = {'C': [0.1,1, 10, 100], 'gamma': [1,0.1,0.01,0.001],'kernel': ['rbf', 'poly', 'sigmoid']}
-grid = GridSearchCV(SVC(),param_grid,refit=True,verbose=2)
-grid.fit(X_train,y_train)
-
-# Accuracy and Classification Report
-grid_predictions = grid.predict(X_test)
-print(f"Accuracy with SVM grid search: {accuracy_score(y_test, grid_predictions)*100}")
-print(classification_report(y_test,grid_predictions))#Output
+# """SVM"""
+# param_grid = {'C': [0.1,1, 10, 100], 'gamma': [1,0.1,0.01,0.001],'kernel': ['rbf', 'poly', 'sigmoid']}
+# grid = GridSearchCV(SVC(),param_grid,refit=True,verbose=2)
+# grid.fit(X_train,y_train)
+#
+# # Accuracy and Classification Report
+# grid_predictions = grid.predict(X_test)
+# print(f"Accuracy with SVM grid search: {accuracy_score(y_test, grid_predictions)*100}")
+# print(classification_report(y_test,grid_predictions))#Output
 
 
 svm = SVC(C=3.0, kernel='rbf', degree=6, cache_size=1024)
@@ -176,7 +176,7 @@ print(classification_report(y_test, tree_pred))
 tree.plot_tree(tree_clf)
 dot_data = tree.export_graphviz(tree_clf, out_file=None)
 graph = graphviz.Source(dot_data)
-graph.render("../figures/DecisionTree")
+graph.render("../figures/DecisionTree_{}_{}".format(season, year))
 
 
 
@@ -198,7 +198,7 @@ fig, ax = plt.subplots()
 forest_importances.plot.bar(yerr=std, ax=ax)
 ax.set_title("Feature importances using MDI")
 ax.set_ylabel("Mean decrease in impurity")
-plt.savefig('../figures/rf_VariableImportance.png')
+plt.savefig('../figures/rf_VariableImportance_{}_{}.png'.format(season, year))
 
 rf_pred = rf_clf.predict(X_test)
 print(f"Accuracy with Random Forest: {accuracy_score(y_test, rf_pred)*100}")

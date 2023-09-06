@@ -23,7 +23,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import GridSearchCV
-import lightgbm as lgb
+# import lightgbm as lgb
 import xgboost as xgb
 from sklearn import tree
 from sklearn.metrics import classification_report, accuracy_score, confusion_matrix
@@ -54,6 +54,15 @@ alterniflora: 2
 season = 'Oct-Dec' # Jan-Mar, Apr-Jun, July-Sep, Oct-Dec
 year = '2022'
 
+sar_season = 'spring'
+
+sar_seasons = {'winter': ['winter_VV', 'winter_VH'],
+             'spring': ['spring_VV', 'spring_VH'],
+             'summer': ['summer_VV', 'summer_VH'],
+             'fall': ['summer_VV', 'summer_VH'],
+             'annual_mean': ['annual_mean_VV', 'annual_mean_VH'],
+             'annual_sd': ['annual_SD_VV', 'annual_SD_VH']}
+
 root_dir = up(os.getcwd())
 points_data = os.path.join(root_dir, 'data/processing_data/vectors/points_planet_comp_{}_{}.geojson'.format(season, year))
 
@@ -62,18 +71,30 @@ gdf['ndvi'] = gdf.apply(lambda x: helpers.cal_ndvi(x['B8'], x['B6']), axis=1)
 gdf['savi'] = gdf.apply(lambda x: helpers.cal_savi(x['B8'], x['B6']), axis=1)
 gdf['ndwi'] = gdf.apply(lambda x: helpers.cal_ndwi(x['B8'], x['B4']), axis=1)
 
+sar_data = os.path.join(root_dir, 'data/processing_data/vectors/points_sar_extraction.geojson')
+sar_gdf = gpd.read_file(sar_data)
+
+# merge sar data
+merge_gdf = pd.merge(gdf, sar_gdf, left_index=True, right_index=True, suffixes=('', '_sar'))
+
+
+if sar_season != None:
+    
+    # getting sar column for the selected season
+    sar_column = sar_seasons[sar_season]
+    filter_column = ['B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'ndvi', 'ndwi', 'savi','dem_value'] + sar_column
+else:
+    filter_column = ['B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'ndvi', 'ndwi', 'savi','dem_value']
+
 # feature selection
-X_data = gdf[['B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'ndvi', 'ndwi', 'savi','dem_value']]
-y_data = gdf['type_class']
+X_data = merge_gdf[filter_column]
+y_data = merge_gdf['type_class']
 # scaler
 scaler = StandardScaler().fit(X_data)
 X_scaled = scaler.transform(X_data)
 
 # split data
 X_train, X_test, y_train, y_test = train_test_split(X_scaled, y_data, test_size=0.30, random_state=42, shuffle=True) # , stratify = y_data.ravel()
-
-print(X_train.shape)
-
 
 
 """K-NNC"""

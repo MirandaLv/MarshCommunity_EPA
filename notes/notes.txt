@@ -67,10 +67,19 @@ PlanetScope Data Retrieval
 
 
 To-do:
-- Research on the soil index, and add the soil index to the model. (The bare soil index requires the shorewave near-infrared band, which is not available in the PlanetScope data). Instead of using BSI, the SAVI (soil adjusted vegetation index) is added to account for the influence of soil reflectance to the area where vegetation has less coverage.
-- Research water moisture index, and add the water moisture index to the model.
-- Seasonal analysis: compare the model performance in composite images acquired from different seasons.
-- Add the boxplot of each feature information in the descriptive analysis.
+- Research on the soil index, and add the soil index to the model. (The bare soil index requires the shorewave near-infrared band, which is not available in the PlanetScope data). Instead of using BSI, the SAVI (soil adjusted vegetation index) is added to account for the influence of soil reflectance to the area where vegetation has less coverage. (done)
+- Research water moisture index, and add the water moisture index to the model. (done)
+- Seasonal analysis: compare the model performance in composite images acquired from different seasons. (done)
+- Add the boxplot of each feature information in the descriptive analysis. (done)
+
+SAR processing:
+- Project the 12 bands image to EPSG:32618 using QGIS.
+- Run sar_processing.py to create a resampled SAR imagery.
+- Run sar_processing.py to extract all bands values of each sample point, and save as a geojson file.
+
+
+Merging SAR with optical
+- Update later
 
 
 

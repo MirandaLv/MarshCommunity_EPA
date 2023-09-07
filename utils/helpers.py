@@ -17,3 +17,8 @@ def ratio_indices(band1, band2):
     # ratio indices
     ratio = band1/band2
     return ratio
+
+def scale_to_sr(val, factor=10000):
+    # scaling to surface reflectance
+    sr = val / float(factor)
+    return sr

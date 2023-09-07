@@ -56,7 +56,7 @@ seasons = {'spring': ['Jan-Mar', 'spring'],
            'winter': ['Oct-Dec', 'winter']}
 
 season = seasons['winter'][0]  # Jan-Mar, Apr-Jun, July-Sep, Oct-Dec
-sar_season = seasons['winter'][1]
+sar_season = seasons['winter'][1] # or None for no SAR data
 
 sar_seasons = {'winter': ['winter_VV', 'winter_VH'],
                'spring': ['spring_VV', 'spring_VH'],
@@ -65,7 +65,7 @@ sar_seasons = {'winter': ['winter_VV', 'winter_VH'],
                'annual_mean': ['annual_mean_VV', 'annual_mean_VH'],
                'annual_sd': ['annual_SD_VV', 'annual_SD_VH']}
 
-filter_column = ['B2', 'B4', 'B6', 'B7', 'B8', 'ndvi', 'ndwi', 'savi', 'dem_value', 'blue_green', 'green_red', 'NIR_red']
+filter_column = ['B7', 'ndvi', 'ndwi', 'savi', 'dem', 'b_g', 'g_r', 'NIR_r']
 
 ########################################################################################################################################################################
 # Loading data
@@ -73,14 +73,28 @@ root_dir = up(os.getcwd())
 points_data = os.path.join(root_dir, 'data/processing_data/vectors/points_planet_comp_{}_{}.geojson'.format(season, year))
 
 gdf = gpd.read_file(points_data)
+
+# scaling band values to SR values
+gdf['B1'] = gdf.apply(lambda x: helpers.scale_to_sr(x['B1']), axis=1)
+gdf['B2'] = gdf.apply(lambda x: helpers.scale_to_sr(x['B2']), axis=1)
+gdf['B3'] = gdf.apply(lambda x: helpers.scale_to_sr(x['B3']), axis=1)
+gdf['B4'] = gdf.apply(lambda x: helpers.scale_to_sr(x['B4']), axis=1)
+gdf['B5'] = gdf.apply(lambda x: helpers.scale_to_sr(x['B5']), axis=1)
+gdf['B6'] = gdf.apply(lambda x: helpers.scale_to_sr(x['B6']), axis=1)
+gdf['B7'] = gdf.apply(lambda x: helpers.scale_to_sr(x['B7']), axis=1)
+gdf['B8'] = gdf.apply(lambda x: helpers.scale_to_sr(x['B8']), axis=1)
+gdf = gdf.rename(columns={"dem_value": "dem"})
+
+# adding three indices
 gdf['ndvi'] = gdf.apply(lambda x: helpers.cal_ndvi(x['B8'], x['B6']), axis=1)
 gdf['savi'] = gdf.apply(lambda x: helpers.cal_savi(x['B8'], x['B6']), axis=1)
 gdf['ndwi'] = gdf.apply(lambda x: helpers.cal_ndwi(x['B8'], x['B4']), axis=1)
 
 # adding three ratio indices from Martha Gilmore et al. (2004)
-gdf['blue_green'] = gdf.apply(lambda x: helpers.ratio_indices(x['B2'], x['B4']), axis=1)
-gdf['green_red'] = gdf.apply(lambda x: helpers.ratio_indices(x['B4'], x['B6']), axis=1)
-gdf['NIR_red'] = gdf.apply(lambda x: helpers.ratio_indices(x['B8'], x['B6']), axis=1)
+gdf['b_g'] = gdf.apply(lambda x: helpers.ratio_indices(x['B2'], x['B4']), axis=1)
+gdf['g_r'] = gdf.apply(lambda x: helpers.ratio_indices(x['B4'], x['B6']), axis=1)
+gdf['NIR_r'] = gdf.apply(lambda x: helpers.ratio_indices(x['B8'], x['B6']), axis=1)
+
 
 sar_data = os.path.join(root_dir, 'data/processing_data/vectors/points_sar_extraction.geojson')
 sar_gdf = gpd.read_file(sar_data)
@@ -203,9 +217,15 @@ dot_data = tree.export_graphviz(tree_clf, out_file=None)
 graph = graphviz.Source(dot_data)
 graph.render("../figures/DecisionTree_{}_{}".format(season, year))
 
+
 """
 Random forest (parameters has not been tuned, code here for meeting display)
 """
+
+# split data with no scaling for RF
+X_train, X_test, y_train, y_test = train_test_split(X_data, y_data, test_size=0.30, random_state=42,
+                                                    shuffle=True)  # , stratify = y_data.ravel()
+
 feature_names = X_data.columns.tolist()
 forest = RandomForestClassifier(random_state=0)
 rf_clf = forest.fit(X_train, y_train)
@@ -221,7 +241,7 @@ fig, ax = plt.subplots()
 forest_importances.plot.bar(yerr=std, ax=ax)
 ax.set_title("Feature importances using MDI")
 ax.set_ylabel("Mean decrease in impurity")
-plt.savefig('../figures/rf_VariableImportance_{}_{}.png'.format(season, year))
+plt.savefig('../figures/rf_VariableImportance_{}_{}.png'.format(season, year), facecolor=(1, 1, 1))
 
 rf_pred = rf_clf.predict(X_test)
 print(f"Accuracy with Random Forest: {accuracy_score(y_test, rf_pred) * 100}")

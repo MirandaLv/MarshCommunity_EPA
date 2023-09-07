@@ -12,3 +12,8 @@ def cal_ndwi(nir, g):
     # NDWI = (G-NIR)/(G+NIR)
     ndwi = (g - nir)/(nir+g)
     return ndwi
+
+def ratio_indices(band1, band2):
+    # ratio indices
+    ratio = band1/band2
+    return ratio

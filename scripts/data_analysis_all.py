@@ -65,15 +65,22 @@ sar_seasons = {'winter': ['winter_VV', 'winter_VH'],
                'annual_mean': ['annual_mean_VV', 'annual_mean_VH'],
                'annual_sd': ['annual_SD_VV', 'annual_SD_VH']}
 
+filter_column = ['B2', 'B4', 'B6', 'B7', 'B8', 'ndvi', 'ndwi', 'savi', 'dem_value', 'blue_green', 'green_red', 'NIR_red']
+
+########################################################################################################################################################################
 # Loading data
 root_dir = up(os.getcwd())
-points_data = os.path.join(root_dir,
-                           'data/processing_data/vectors/points_planet_comp_{}_{}.geojson'.format(season, year))
+points_data = os.path.join(root_dir, 'data/processing_data/vectors/points_planet_comp_{}_{}.geojson'.format(season, year))
 
 gdf = gpd.read_file(points_data)
 gdf['ndvi'] = gdf.apply(lambda x: helpers.cal_ndvi(x['B8'], x['B6']), axis=1)
 gdf['savi'] = gdf.apply(lambda x: helpers.cal_savi(x['B8'], x['B6']), axis=1)
 gdf['ndwi'] = gdf.apply(lambda x: helpers.cal_ndwi(x['B8'], x['B4']), axis=1)
+
+# adding three ratio indices from Martha Gilmore et al. (2004)
+gdf['blue_green'] = gdf.apply(lambda x: helpers.ratio_indices(x['B2'], x['B4']), axis=1)
+gdf['green_red'] = gdf.apply(lambda x: helpers.ratio_indices(x['B4'], x['B6']), axis=1)
+gdf['NIR_red'] = gdf.apply(lambda x: helpers.ratio_indices(x['B8'], x['B6']), axis=1)
 
 sar_data = os.path.join(root_dir, 'data/processing_data/vectors/points_sar_extraction.geojson')
 sar_gdf = gpd.read_file(sar_data)
@@ -82,12 +89,10 @@ sar_gdf = gpd.read_file(sar_data)
 merge_gdf = pd.merge(gdf, sar_gdf, left_index=True, right_index=True, suffixes=('', '_sar'))
 
 if sar_season != None:
-
     # getting sar column for the selected season
     sar_column = sar_seasons[sar_season]
-    filter_column = ['B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'ndvi', 'ndwi', 'savi', 'dem_value'] + sar_column
-else:
-    filter_column = ['B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'ndvi', 'ndwi', 'savi', 'dem_value']
+    filter_column = filter_column + sar_column
+
 
 # feature selection
 X_data = merge_gdf[filter_column]

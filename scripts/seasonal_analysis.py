@@ -1,6 +1,6 @@
 """
 author: Miranda Lv
-Date: July, 2023
+Date: Sep, 2023
 """
 
 import os
@@ -15,6 +15,7 @@ import geopandas as gpd
 import numpy as np
 import pandas as pd
 import helpers
+import itertools
 
 # machine learning
 from sklearn.model_selection import train_test_split
@@ -50,67 +51,83 @@ alterniflora: 2
 """
 # setting filter parameters
 year = '2022'
-seasons = {'spring': ['Jan-Mar', 'spring'],
-           'summer': ['Apr-Jun', 'summer'],
-           'fall': ['July-Sep', 'fall'],
-           'winter': ['Oct-Dec', 'winter']}
+seasons = {'S1': 'Jan-Mar',
+           'S2': 'Apr-Jun',
+           'S3': 'July-Sep',
+           'S4': 'Oct-Dec'}
 
-season = seasons['winter'][0]  # Jan-Mar, Apr-Jun, July-Sep, Oct-Dec
-sar_season = seasons['winter'][1] # or None for no SAR data
+sar_annual = {'mean': ['annual_mean_VH', 'annual_mean_VV'],
+              'sd': ['annual_sd_VH', 'annual_sd_VV']}
 
-sar_seasons = {'winter': ['winter_VV', 'winter_VH'],
-               'spring': ['spring_VV', 'spring_VH'],
-               'summer': ['summer_VV', 'summer_VH'],
-               'fall': ['summer_VV', 'summer_VH'],
-               'annual_mean': ['annual_mean_VV', 'annual_mean_VH'],
-               'annual_sd': ['annual_SD_VV', 'annual_SD_VH']}
+var_column = ['ndwi', 'ndvi', 'g_b', 'r_g', 'NIR_r', 'B7']
+all_seasons = ['S1', 'S2', 'S3', 'S4']
 
-filter_column = ['B7', 'ndvi', 'ndwi', 'savi', 'dem', 'b_g', 'g_r', 'NIR_r']
+sar_season = None
+
+filter_column = ['{}_{}'.format(r[0], r[1]) for r in itertools.product(var_column, all_seasons)] + ['dem']
 
 ########################################################################################################################################################################
 # Loading data
-root_dir = up(os.getcwd())
-points_data = os.path.join(root_dir, 'data/processing_data/vectors/points_planet_comp_{}_{}.geojson'.format(season, year))
 
-gdf = gpd.read_file(points_data)
+all_gdf = gpd.GeoDataFrame()
+gdfs = []
 
-# scaling band values to SR values
-gdf['B1'] = gdf.apply(lambda x: helpers.scale_to_sr(x['B1']), axis=1)
-gdf['B2'] = gdf.apply(lambda x: helpers.scale_to_sr(x['B2']), axis=1)
-gdf['B3'] = gdf.apply(lambda x: helpers.scale_to_sr(x['B3']), axis=1)
-gdf['B4'] = gdf.apply(lambda x: helpers.scale_to_sr(x['B4']), axis=1)
-gdf['B5'] = gdf.apply(lambda x: helpers.scale_to_sr(x['B5']), axis=1)
-gdf['B6'] = gdf.apply(lambda x: helpers.scale_to_sr(x['B6']), axis=1)
-gdf['B7'] = gdf.apply(lambda x: helpers.scale_to_sr(x['B7']), axis=1)
-gdf['B8'] = gdf.apply(lambda x: helpers.scale_to_sr(x['B8']), axis=1)
-gdf = gdf.rename(columns={"dem_value": "dem"})
+for key, v in seasons.items():
+    root_dir = up(os.getcwd())
+    points_data = os.path.join(root_dir,
+                               'data/processing_data/vectors/points_planet_comp_{}_{}.geojson'.format(seasons[key],
+                                                                                                      year))
 
-# adding three indices
-gdf['ndvi'] = gdf.apply(lambda x: helpers.cal_ndvi(x['B8'], x['B6']), axis=1)
-gdf['savi'] = gdf.apply(lambda x: helpers.cal_savi(x['B8'], x['B6']), axis=1)
-gdf['ndwi'] = gdf.apply(lambda x: helpers.cal_ndwi(x['B8'], x['B4']), axis=1)
+    gdf = gpd.read_file(points_data)
 
-# adding three ratio indices from Martha Gilmore et al. (2004)
-gdf['b_g'] = gdf.apply(lambda x: helpers.ratio_indices(x['B2'], x['B4']), axis=1)
-gdf['g_r'] = gdf.apply(lambda x: helpers.ratio_indices(x['B4'], x['B6']), axis=1)
-gdf['NIR_r'] = gdf.apply(lambda x: helpers.ratio_indices(x['B8'], x['B6']), axis=1)
+    # scaling band values to SR values
+    gdf['B1'] = gdf.apply(lambda x: helpers.scale_to_sr(x['B1']), axis=1)
+    gdf['B2'] = gdf.apply(lambda x: helpers.scale_to_sr(x['B2']), axis=1)
+    gdf['B3'] = gdf.apply(lambda x: helpers.scale_to_sr(x['B3']), axis=1)
+    gdf['B4'] = gdf.apply(lambda x: helpers.scale_to_sr(x['B4']), axis=1)
+    gdf['B5'] = gdf.apply(lambda x: helpers.scale_to_sr(x['B5']), axis=1)
+    gdf['B6'] = gdf.apply(lambda x: helpers.scale_to_sr(x['B6']), axis=1)
+    gdf['B7'] = gdf.apply(lambda x: helpers.scale_to_sr(x['B7']), axis=1)
+    gdf['B8'] = gdf.apply(lambda x: helpers.scale_to_sr(x['B8']), axis=1)
+    # adding three indices
+    gdf['ndvi'] = gdf.apply(lambda x: helpers.cal_ndvi(x['B8'], x['B6']), axis=1)
+    gdf['savi'] = gdf.apply(lambda x: helpers.cal_savi(x['B8'], x['B6']), axis=1)
+    gdf['ndwi'] = gdf.apply(lambda x: helpers.cal_ndwi(x['B8'], x['B4']), axis=1)
 
+    # adding four additional ratio indices from Martha Gilmore et al. (2004)
+    gdf['g_b'] = gdf.apply(lambda x: helpers.ratio_indices(x['B4'], x['B2']), axis=1)
+    gdf['r_g'] = gdf.apply(lambda x: helpers.ratio_indices(x['B6'], x['B4']), axis=1)
+    gdf['NIR_g'] = gdf.apply(lambda x: helpers.ratio_indices(x['B8'], x['B4']), axis=1)
+    gdf['NIR_r'] = gdf.apply(lambda x: helpers.ratio_indices(x['B8'], x['B6']), axis=1)
+
+    gdf = gdf.add_suffix('_{}'.format(key))
+    gdfs.append(gdf)
+
+merge_gdf = pd.merge(gdfs[0], gdfs[1], left_index=True, right_index=True)
+merge_gdf = pd.merge(merge_gdf, gdfs[2], left_index=True, right_index=True)
+merge_gdf = pd.merge(merge_gdf, gdfs[3], left_index=True, right_index=True)
+
+# update dem column so remove the repetitive dem column from different seasons
+merge_gdf = merge_gdf.rename(columns={"dem_value_S1": "dem"})
+
+########################################################################################################################################################################
+# Load sar for testing, need to set up the sar_season variable
 
 sar_data = os.path.join(root_dir, 'data/processing_data/vectors/points_sar_extraction.geojson')
 sar_gdf = gpd.read_file(sar_data)
 
 # merge sar data
-merge_gdf = pd.merge(gdf, sar_gdf, left_index=True, right_index=True, suffixes=('', '_sar'))
+merge_gdf = pd.merge(merge_gdf, sar_gdf, left_index=True, right_index=True, suffixes=('', '_sar'))
 
 if sar_season != None:
     # getting sar column for the selected season
-    sar_column = sar_seasons[sar_season]
+    sar_column = sar_annual[sar_season]
     filter_column = filter_column + sar_column
 
-
+########################################################################################################################################################################
 # feature selection
 X_data = merge_gdf[filter_column]
-y_data = merge_gdf['type_class']
+y_data = merge_gdf['type_class_S1']
 # scaler
 scaler = StandardScaler().fit(X_data)
 X_scaled = scaler.transform(X_data)
@@ -134,7 +151,7 @@ plt.plot(range(1, 21), knn_mean_acc)
 plt.xticks(loc)
 plt.xlabel('Number of Neighbors ')
 plt.ylabel('Accuracy')
-plt.savefig('../figures/knn_accuracy_{}_{}.png'.format(season, year))
+plt.savefig('../figures/knn_accuracy_seasonal_{}.png'.format(year))
 
 # # parameter searching
 # # Grid Search
@@ -215,12 +232,16 @@ print(classification_report(y_test, tree_pred))
 tree.plot_tree(tree_clf)
 dot_data = tree.export_graphviz(tree_clf, out_file=None)
 graph = graphviz.Source(dot_data)
-graph.render("../figures/DecisionTree_{}_{}".format(season, year))
+graph.render("../figures/DecisionTree_seasonal_{}".format(year))
 
 
 """
-Random forest (parameters has not been tuned, code here for meeting display)
+Random forest
 """
+### TODO: Recursive Feature Elimination RFECV
+### TODO: Feature selection with SelectFromModel
+### TODO: Feature selection with SelectKBest
+### TODO: Permutation feature importance
 
 # split data with no scaling for RF
 X_train, X_test, y_train, y_test = train_test_split(X_data, y_data, test_size=0.30, random_state=42,
@@ -231,19 +252,21 @@ forest = RandomForestClassifier(random_state=0)
 
 rf_clf = forest.fit(X_train, y_train)
 
-start_time = time.time()
 importances = forest.feature_importances_
 std = np.std([tree.feature_importances_ for tree in forest.estimators_], axis=0)
 
 # getting variable importance
-forest_importances = pd.Series(importances, index=feature_names)
+forest_importances = pd.Series(importances, index=feature_names).sort_values(ascending=True)
 
 fig, ax = plt.subplots()
-forest_importances.plot.bar(yerr=std, ax=ax)
+forest_importances.plot.barh(yerr=std, ax=ax, align='center', color="g")
 ax.set_title("Feature importances using MDI")
 ax.set_ylabel("Mean decrease in impurity")
-plt.savefig('../figures/rf_VariableImportance_{}_{}.png'.format(season, year), facecolor=(1, 1, 1))
+plt.savefig('../figures/rf_VariableImportance_seasonal_{}.png'.format(year), facecolor=(1, 1, 1))
 
 rf_pred = rf_clf.predict(X_test)
 print(f"Accuracy with Random Forest: {accuracy_score(y_test, rf_pred) * 100}")
 print(classification_report(y_test, rf_pred))
+
+
+

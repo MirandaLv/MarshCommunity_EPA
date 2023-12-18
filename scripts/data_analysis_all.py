@@ -27,6 +27,7 @@ from sklearn.model_selection import GridSearchCV
 import xgboost as xgb
 from sklearn import tree
 from sklearn.metrics import classification_report, accuracy_score, confusion_matrix
+import itertools
 
 # visualization
 import matplotlib.pyplot as plt

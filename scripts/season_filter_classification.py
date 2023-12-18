@@ -1,6 +1,7 @@
+
 """
 author: Miranda Lv
-Date: Sep, 2023
+Date: Dec, 2023
 """
 
 import os
@@ -61,10 +62,16 @@ seasons = {'S1': 'Jan-Mar',
 sar_annual = {'mean': ['annual_mean_VH', 'annual_mean_VV'],
               'sd': ['annual_sd_VH', 'annual_sd_VV']}
 
-var_column = ['ndwi', 'ndvi', 'g_b', 'r_g', 'NIR_r','B7', 'B2', 'B3', 'B4', 'B5', 'B6', 'B8'] #'NIR_g'
-all_seasons = ['S1', 'S2', 'S3', 'S4']
+# var_column = ['ndwi', 'ndvi', 'g_b', 'r_g', 'NIR_r', 'NIR_g','B7', 'B2', 'B3', 'B4', 'B5', 'B6', 'B8']
+# all_seasons = ['S1', 'S2', 'S3', 'S4']
 
 sar_season = None
+
+# filter_column = ['dem', 'ndvi_S1', 'NIR_r_S1', 'NIR_r_S4', 'r_g_S3', 'g_b_S1', 'NIR_g_S1', 'ndvi_S4', 'NIR_g_S4', 'ndwi_S4']
+
+var_column = ['ndwi', 'ndvi', 'g_b', 'r_g', 'NIR_r', 'B7'] #NIR_g
+all_seasons = ['S1', 'S2', 'S3', 'S4']
+
 
 filter_column = ['{}_{}'.format(r[0], r[1]) for r in itertools.product(var_column, all_seasons)] + ['dem']
 
@@ -126,6 +133,7 @@ if sar_season != None:
     sar_column = sar_annual[sar_season]
     filter_column = filter_column + sar_column
 
+
 ########################################################################################################################################################################
 # feature selection
 X_data = merge_gdf[filter_column]
@@ -138,54 +146,8 @@ X_scaled = scaler.transform(X_data)
 X_train, X_test, y_train, y_test = train_test_split(X_scaled, y_data, test_size=0.30, random_state=42,
                                                     shuffle=True)  # , stratify = y_data.ravel()
 
-"""K-NNC"""
-# calculating the accuracy of models with different values of k
-knn_mean_acc = np.zeros(20)
-for i in range(1, 21):
-    # Train Model and Predict
-    knn = KNeighborsClassifier(n_neighbors=i).fit(X_train, y_train)
-    yhat = knn.predict(X_test)
-    knn_mean_acc[i - 1] = accuracy_score(y_test, yhat) * 100
 
-loc = np.arange(1, 21, step=1.0)
-plt.figure(figsize=(10, 6))
-plt.plot(range(1, 21), knn_mean_acc)
-plt.xticks(loc)
-plt.xlabel('Number of Neighbors ')
-plt.ylabel('Accuracy')
-plt.savefig('../figures/knn_accuracy_seasonal_{}.png'.format(year))
-
-# # parameter searching
-# # Grid Search
-# # number of neighbors are chosen based on getting the knn_accuracy.png for each season.
-# grid_params = {'weights' : ['uniform','distance'],
-#                'metric' : ['minkowski','euclidean','manhattan']}
-#
-# gs = GridSearchCV(KNeighborsClassifier(5), grid_params, verbose = 1, cv=3, n_jobs = -1)
-# # fit the model on our train set
-# g_res = gs.fit(X_train, y_train)
-# # find the best score
-# print(g_res.best_score_)
-
-# Train Model and Predict
-knn = KNeighborsClassifier(n_neighbors=6)
-knn.fit(X_train, y_train)
-# Predict the labels of test data
-knn_pred = knn.predict(X_test)
-print(f"Accuracy with K-NNC: {accuracy_score(y_test, knn_pred) * 100}")
-print(classification_report(y_test, knn_pred))
-
-# """SVM"""
-# param_grid = {'C': [0.1,1, 10, 100], 'gamma': [1,0.1,0.01,0.001],'kernel': ['rbf', 'poly', 'sigmoid']}
-# grid = GridSearchCV(SVC(),param_grid,refit=True,verbose=2)
-# grid.fit(X_train,y_train)
-#
-# # Accuracy and Classification Report
-# grid_predictions = grid.predict(X_test)
-# print(f"Accuracy with SVM grid search: {accuracy_score(y_test, grid_predictions)*100}")
-# print(classification_report(y_test,grid_predictions))#Output
-
-
+# Running SVM with filtered important features
 svm = SVC(C=3.0, kernel='rbf', degree=6, cache_size=1024)
 # Fit Data
 svm.fit(X_train, y_train)
@@ -195,46 +157,6 @@ svm_pred = svm.predict(X_test)
 print(f"Accuracy with SVM: {accuracy_score(y_test, svm_pred) * 100}")
 print(classification_report(y_test, svm_pred))
 
-#
-# """
-# LightGBM
-# -> Figure out parameters
-# """
-# d_train = lgb.Dataset(X_train, label=y_train)
-# # Parameters
-# params={}
-# params['learning_rate']=0.03
-# params['boosting_type']='gbdt' #GradientBoostingDecisionTree
-# params['objective']='multiclass' #Multi-class target feature
-# params['metric']='multi_logloss' #metric for multi-class
-# params['max_depth']=15
-# params['num_class']=6 #no.of unique values in the target class not inclusive of the end value
-#
-# clf = lgb.train(params, d_train, 100)
-#
-# # prediction
-# lgb_predictions = clf.predict(X_test)
-# lgb_pred = np.argmax(lgb_predictions, axis=1)
-#
-# # Accuracy and Classification Report
-# print(f"Accuracy with lgb: {accuracy_score(y_test, lgb_pred)*100}")
-# print(classification_report(y_test, lgb_pred))
-
-
-"""
-Decision Tree
-"""
-tree_clf = tree.DecisionTreeClassifier()
-tree_clf = tree_clf.fit(X_train, y_train)
-tree_pred = tree_clf.predict(X_test)
-
-print(f"Accuracy with Decision Tree: {accuracy_score(y_test, tree_pred) * 100}")
-print(classification_report(y_test, tree_pred))
-
-tree.plot_tree(tree_clf)
-dot_data = tree.export_graphviz(tree_clf, out_file=None)
-graph = graphviz.Source(dot_data)
-graph.render("../figures/DecisionTree_seasonal_{}".format(year))
 
 
 """
@@ -258,36 +180,12 @@ std = np.std([tree.feature_importances_ for tree in forest.estimators_], axis=0)
 forest_importances = pd.Series(importances, index=feature_names).sort_values(ascending=False)
 
 fig, ax = plt.subplots()
-forest_importances.head(10).plot.barh(align='center', color="g") #, align='center', color="g"
-ax.set_title("Feature importances") # using MDI
-ax.set_ylabel("Mean decrease in impurity")
-plt.savefig('../figures/rf_VariableImportance_top10.png'.format(year), facecolor=(1, 1, 1))
-
-
-fig, ax = plt.subplots()
 forest_importances.plot.barh(align='center', color="g") #, align='center', color="g"
 ax.set_title("Feature importances") # using MDI
 ax.set_ylabel("Mean decrease in impurity")
-plt.savefig('../figures/rf_VariableImportance_allvariables.png'.format(year), facecolor=(1, 1, 1))
+plt.savefig('../figures/rf_rerun_filtered_all.png'.format(year), facecolor=(1, 1, 1))
 plt.show()
 
 rf_pred = rf_clf.predict(X_test)
 print(f"Accuracy with Random Forest: {accuracy_score(y_test, rf_pred) * 100}")
 print(classification_report(y_test, rf_pred))
-
-
-
-#
-# # feature permutation
-# result = permutation_importance(
-#     forest, X_test, y_test, n_repeats=10, random_state=42, n_jobs=2
-# )
-#
-# forest_importances = pd.Series(result.importances_mean, index=feature_names).sort_values(ascending=False)
-#
-# fig, ax = plt.subplots()
-# forest_importances.plot.bar(yerr=result.importances_std, ax=ax)
-# ax.set_title("Feature Importances using permutation on full model")
-# ax.set_ylabel("Mean accuracy decrease")
-# fig.tight_layout()
-# plt.savefig('../figures/rf_featurePerm_seasonal_{}.png'.format(year), facecolor=(1, 1, 1))
